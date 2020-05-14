@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react'
 import {
@@ -8,12 +10,14 @@ import {
   Platform,
 } from 'react-native'
 import Icon from 'react-native-vector-icons/Feather'
+import { useNavigation } from '@react-navigation/native'
 
 import { useAuth } from '../../hooks/auth'
 
 import logoImg from '../../assets/logo.png'
 
 import { Container, Title, SignOutButton, SignOutButtonText } from './styles'
+import Button from '../../components/Button'
 
 interface SignInFormData {
   email: string
@@ -22,6 +26,7 @@ interface SignInFormData {
 
 const Dashboard: React.FC = () => {
   const { signOut } = useAuth()
+  const navigation = useNavigation()
 
   return (
     <>
@@ -35,14 +40,28 @@ const Dashboard: React.FC = () => {
           contentContainerStyle={{ flex: 1 }}
         >
           <Container>
-            <Image source={logoImg} />
-            <View>
-              <Title>DASHBORAD</Title>
-            </View>
+            <Image
+              source={logoImg}
+              style={{
+                flex: 1,
+                justifyContent: 'center',
+                alignItems: 'center',
+                resizeMode: 'center',
+                width: '90%',
+              }}
+            />
+            {/* <View>
+              <Title />
+            </View> */}
+            <Button onPress={() => {}}>Vendas</Button>
+            <Button onPress={() => {}}>Compras</Button>
+            <Button onPress={() => {}}>Gráficos</Button>
+            <Button onPress={() => {}}>Administrativo</Button>
           </Container>
         </ScrollView>
       </KeyboardAvoidingView>
-      <SignOutButton onPress={signOut}>
+      <SignOutButton onPress={() => navigation.navigate('SignIn')}>
+        {/* <SignOutButton onPress={signOut}> */}
         <Icon name="log-out" size={20} color="#9D49D3" />
         <SignOutButtonText>Sair da conta</SignOutButtonText>
       </SignOutButton>

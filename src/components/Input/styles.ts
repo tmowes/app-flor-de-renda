@@ -9,16 +9,15 @@ interface ContainerProps {
 
 export const Container = styled.View<ContainerProps>`
   width: 100%;
-  height: 60px;
+  height: 50px;
   padding: 0 16px;
   background: #ffbafd;
-  border-radius: 30px;
+  border-radius: 25px;
   margin-bottom: 8px;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   border-width: 2px;
-
   border-color: #f4ede8;
   ${props =>
     props.isErrored &&

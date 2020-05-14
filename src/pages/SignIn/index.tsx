@@ -89,7 +89,16 @@ const SignIn: React.FC = () => {
           contentContainerStyle={{ flex: 1 }}
         >
           <Container>
-            <Image source={logoImg} />
+            <Image
+              source={logoImg}
+              style={{
+                flex: 1,
+                justifyContent: 'center',
+                alignItems: 'center',
+                resizeMode: 'center',
+                width: '90%',
+              }}
+            />
             <View>
               <Title>Faça seu login</Title>
             </View>
@@ -97,7 +106,7 @@ const SignIn: React.FC = () => {
               <Input
                 autoCorrect={false}
                 autoCapitalize="none"
-                name="email"
+                name="name"
                 placeholder="Usuário"
                 icon="user"
                 returnKeyType="next"
@@ -130,7 +139,7 @@ const SignIn: React.FC = () => {
           </Container>
         </ScrollView>
       </KeyboardAvoidingView>
-      <CreateAccountButton onPress={() => navigation.navigate('SignUp')}>
+      <CreateAccountButton onPress={() => navigation.navigate('Dashboard')}>
         <Icon name="shield-off" size={20} color="#730fc3" />
         <CreateAccountButtonText>Logar sem conta</CreateAccountButtonText>
       </CreateAccountButton>

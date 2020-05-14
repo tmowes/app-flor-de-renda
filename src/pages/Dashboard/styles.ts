@@ -11,7 +11,7 @@ export const Container = styled.View`
 
 export const Title = styled.Text`
   font-size: 24px;
-  color: #f4ede8;
+  color: #312e38;
   font-family: 'RobotoSlab-Medium';
   margin: 64px 0 24px;
 `
@@ -20,18 +20,18 @@ export const SignOutButton = styled.TouchableOpacity`
   left: 0;
   right: 0;
   bottom: 0;
-  background: #312e38;
+  background: #ffd0f8;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 
   border-top-width: 1px;
-  border-color: #232129;
+  border-color: #9d49d3;
   padding: 16px 0 ${8 + getBottomSpace()}px;
 `
 
 export const SignOutButtonText = styled.Text`
-  color: #9d49d3;
+  color: #730fc3;
   font-size: 18px;
   font-family: 'RobotoSlab-Medium';
   margin-left: 16px;
