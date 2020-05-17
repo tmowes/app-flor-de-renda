@@ -15,7 +15,7 @@ export const Title = styled.Text`
   margin: 8px 0 16px;
 `
 export const ForgotPassword = styled.TouchableOpacity`
-  margin-top: 64px;
+  margin-top: 48px;
 `
 export const ForgotPasswordText = styled.Text`
   color: #312e38;

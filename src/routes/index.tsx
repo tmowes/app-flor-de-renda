@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react'
 
 import { View, ActivityIndicator } from 'react-native'
@@ -13,12 +14,13 @@ const Routes: React.FC = () => {
   if (loading) {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <ActivityIndicator size="large" color="#999" />
+        <AppRoutes />
+        {/* <ActivityIndicator size="large" color="#999" /> */}
       </View>
     )
   }
-
-  return user ? <AppRoutes /> : <AuthRoutes />
+  // return user ? <AppRoutes /> : <AuthRoutes />
+  return user ? <AppRoutes /> : <AppRoutes />
 }
 
 export default Routes

@@ -24,7 +24,7 @@ interface SignInFormData {
   password: string
 }
 
-const Dashboard: React.FC = () => {
+const Admin: React.FC = () => {
   const { signOut } = useAuth()
   const navigation = useNavigation()
 
@@ -50,15 +50,9 @@ const Dashboard: React.FC = () => {
                 width: '90%',
               }}
             />
-            {/* <View>
-              <Title />
-            </View> */}
-            <Button onPress={() => navigation.navigate('Sells')}>Vendas</Button>
-            <Button onPress={() => {}}>Compras</Button>
-            <Button onPress={() => {}}>Gráficos</Button>
-            <Button onPress={() => navigation.navigate('Admin')}>
-              Administrativo
-            </Button>
+            <Button onPress={() => {}}>Relatórios</Button>
+            <Button onPress={() => {}}>Consultas</Button>
+            <Button onPress={() => {}}>Cadastros</Button>
           </Container>
         </ScrollView>
       </KeyboardAvoidingView>
@@ -71,4 +65,4 @@ const Dashboard: React.FC = () => {
   )
 }
 
-export default Dashboard
+export default Admin

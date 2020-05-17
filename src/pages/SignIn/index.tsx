@@ -140,7 +140,7 @@ const SignIn: React.FC = () => {
         </ScrollView>
       </KeyboardAvoidingView>
       <CreateAccountButton onPress={() => navigation.navigate('Dashboard')}>
-        <Icon name="shield-off" size={20} color="#730fc3" />
+        <Icon name="shield-off" size={24} color="#730fc3" />
         <CreateAccountButtonText>Logar sem conta</CreateAccountButtonText>
       </CreateAccountButton>
     </>
