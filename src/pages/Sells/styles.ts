@@ -132,6 +132,19 @@ export const OrdersTitle = styled.Text`
   font-family: 'RobotoSlab-Medium';
   margin: 0 0 8px;
 `
+export const DetailsPopUp = styled.View`
+  position:absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  top: 0px;
+  background-color: #FFD0F8;
+  z-index: 10;
+  margin: 170px 16px 16px;
+  border-radius: 20px;
+  border-color: #9D49D3;
+  border-width: 2px;
+`
 
 export const Footer = styled.View`
   position: absolute;

@@ -45,6 +45,7 @@ import {
   ProductTitle,
   Product,
   Footer,
+  DetailsPopUp,
 } from './styles'
 import { data } from '../../temp/products'
 import api from '../../services/api'
@@ -161,6 +162,9 @@ const Sells: React.FC = () => {
             </Product>
           )}
         />
+        <DetailsPopUp>
+          <Title>DETALHES</Title>
+        </DetailsPopUp>
         <Footer>
           <Button onPress={() => {}}>Adicionar Item</Button>
         </Footer>
