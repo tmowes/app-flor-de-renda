@@ -82,11 +82,11 @@ export const FlatListHeaderText = styled.Text`
 `
 
 export const ProductList = styled(FlatList as new () => FlatList<CartState>)`
-  flex: 1;
+  /* flex: 1; */
   position: relative;
   top: 200px;
   left: 0;
-  width: 120%;
+  /* width: 120%; */
   padding: 0 16px;
 `
 export const SignOutButton = styled.TouchableOpacity`
@@ -138,11 +138,11 @@ export const DetailsPopUp = styled.View`
   right: 0px;
   bottom: 0px;
   top: 0px;
-  background-color: #FFD0F8;
+  background-color: #ffd0f8;
   z-index: 10;
   margin: 170px 16px 40px;
   border-radius: 20px;
-  border-color: #9D49D3;
+  border-color: #9d49d3;
   border-width: 2px;
 `
 

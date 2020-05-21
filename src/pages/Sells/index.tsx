@@ -21,6 +21,7 @@ import { useNavigation } from '@react-navigation/native'
 import { Form } from '@unform/mobile'
 import Icon from 'react-native-vector-icons/Feather'
 
+import { TouchableOpacity } from 'react-native-gesture-handler'
 import formatValue from '../../utils/formatValue'
 import logoImg from '../../assets/logo.png'
 import SmallInput from '../../components/SmallInput'
@@ -50,7 +51,6 @@ import {
 } from './styles'
 import { data } from '../../temp/products'
 import api from '../../services/api'
-import { TouchableOpacity } from 'react-native-gesture-handler'
 
 interface CartState {
   id: string
@@ -62,13 +62,17 @@ interface CartState {
 const Sells: React.FC = () => {
   const [products, setProducts] = useState<CartState[]>([])
   const navigation = useNavigation()
-  const [popup, setPopup] = useState(false)
+  const [popup, setPopup] = useState<boolean>(false)
 
-  function handlerPopup({popup}) {
-    if(!popup) {setPopup(true)
-    }else{setPopup(true)
-    };
-  };
+  function handlerPopup() {
+    if (!popup) {
+      setPopup(true)
+      console.log('popup state?', popup)
+    } else {
+      setPopup(false)
+      console.log('popup state?', popup)
+    }
+  }
 
   // useEffect(() => {
   //   async function loadProducts(): Promise<void> {
@@ -83,14 +87,14 @@ const Sells: React.FC = () => {
   //   loadProducts()
   // }, [])
 
-  useEffect(() => {
-    async function loadProducts(): Promise<void> {
-      // DONE LOAD PRODUCTS FROM API
-      const response = await api.get('/products')
-      setProducts(response.data)
-    }
-    loadProducts()
-  }, [])
+  // useEffect(() => {
+  //   async function loadProducts(): Promise<void> {
+  //     // DONE LOAD PRODUCTS FROM API
+  //     const response = await api.get('/products')
+  //     setProducts(response.data)
+  //   }
+  //   loadProducts()
+  // }, [])
 
   return (
     <>
@@ -153,7 +157,7 @@ const Sells: React.FC = () => {
           </CartHeader>
           <FlatListHeader>
             <FlatListHeaderText> ITENS </FlatListHeaderText>
-            <TouchableOpacity onPress={() =>{handlerPopup({popup})}}>
+            <TouchableOpacity onPress={handlerPopup}>
               <FlatListHeaderText>DETALHES </FlatListHeaderText>
             </TouchableOpacity>
           </FlatListHeader>
@@ -175,14 +179,18 @@ const Sells: React.FC = () => {
         />
         {popup && (
           <DetailsPopUp>
-          <Title>DETALHES</Title>
-          <Checkbox />
-          <Text>À VISTA</Text>
-          <Text>DESCONTO %</Text>
-          <Checkbox />
-          <Text>À PRAZO</Text>
-          <TouchableOpacity onpress={() =>{handlerPopup({popup})}} ><Icon name="minus" size={24} color="#9D49D3"/></TouchableOpacity>
-        </DetailsPopUp>
+            <View>
+              <Title>DETALHES</Title>
+              <TouchableOpacity onPress={handlerPopup}>
+                <Icon name="minus" size={24} color="#9D49D3" />
+              </TouchableOpacity>
+            </View>
+            <Checkbox />
+            <Text>À VISTA</Text>
+            <Text>DESCONTO %</Text>
+            <Checkbox />
+            <Text>À PRAZO</Text>
+          </DetailsPopUp>
         )}
         <Footer>
           <Button onPress={() => {}}>Adicionar Item</Button>
