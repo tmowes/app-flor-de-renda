@@ -46,9 +46,11 @@ import {
   Product,
   Footer,
   DetailsPopUp,
+  Checkbox,
 } from './styles'
 import { data } from '../../temp/products'
 import api from '../../services/api'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 
 interface CartState {
   id: string
@@ -60,6 +62,13 @@ interface CartState {
 const Sells: React.FC = () => {
   const [products, setProducts] = useState<CartState[]>([])
   const navigation = useNavigation()
+  const [popup, setPopup] = useState(false)
+
+  function handlerPopup({popup}) {
+    if(!popup) {setPopup(true)
+    }else{setPopup(true)
+    };
+  };
 
   // useEffect(() => {
   //   async function loadProducts(): Promise<void> {
@@ -144,7 +153,9 @@ const Sells: React.FC = () => {
           </CartHeader>
           <FlatListHeader>
             <FlatListHeaderText> ITENS </FlatListHeaderText>
-            <FlatListHeaderText> DETALHES </FlatListHeaderText>
+            <TouchableOpacity onPress={() =>{handlerPopup({popup})}}>
+              <FlatListHeaderText>DETALHES </FlatListHeaderText>
+            </TouchableOpacity>
           </FlatListHeader>
         </Header>
         <ProductList<any>
@@ -162,9 +173,17 @@ const Sells: React.FC = () => {
             </Product>
           )}
         />
-        <DetailsPopUp>
+        {popup && (
+          <DetailsPopUp>
           <Title>DETALHES</Title>
+          <Checkbox />
+          <Text>À VISTA</Text>
+          <Text>DESCONTO %</Text>
+          <Checkbox />
+          <Text>À PRAZO</Text>
+          <TouchableOpacity onpress={() =>{handlerPopup({popup})}} ><Icon name="minus" size={24} color="#9D49D3"/></TouchableOpacity>
         </DetailsPopUp>
+        )}
         <Footer>
           <Button onPress={() => {}}>Adicionar Item</Button>
         </Footer>
