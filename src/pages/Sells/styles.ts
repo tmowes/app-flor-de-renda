@@ -14,6 +14,16 @@ export const Container = styled.View`
   justify-content: center;
   padding: 16px 16px;
 `
+export const ViewTeste = styled.View`
+  flex: 1;
+  /* align-items: center; */
+  justify-content: center;
+  background-color: #144;
+  top: 200px;
+  bottom: 100px;
+  /* padding: 16px 16px; */
+`
+
 export const Header = styled.View`
   position: absolute;
   top: 16px;
@@ -70,7 +80,8 @@ export const FlatListHeader = styled.View`
   /* height: 35%; */
   /* background: green; */
   justify-content: space-evenly;
-  align-items: flex-start;
+  /* align-items: flex-start; */
+  align-items: center;
   border-bottom-width: 1px;
   border-color: #9d49d3;
 `
@@ -83,11 +94,15 @@ export const FlatListHeaderText = styled.Text`
 
 export const ProductList = styled(FlatList as new () => FlatList<CartState>)`
   /* flex: 1; */
-  position: relative;
-  top: 200px;
+  /* flex-grow: 0; */
+  /* position: relative; */
+  /* top: 200px; */
   left: 0;
   /* width: 120%; */
   padding: 0 16px;
+  /* bottom: 0; */
+  margin: 0 0 50px;
+  height: auto;
 `
 export const SignOutButton = styled.TouchableOpacity`
   position: absolute;
@@ -160,5 +175,8 @@ export const Footer = styled.View`
   padding: 0 16px ${40 + getBottomSpace()}px;
 `
 export const Checkbox = styled(CheckBox)`
+  border-radius: 20px;
+`
+export const Qrcode = styled(CheckBox)`
   border-radius: 20px;
 `

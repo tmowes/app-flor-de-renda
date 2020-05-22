@@ -48,6 +48,7 @@ import {
   Footer,
   DetailsPopUp,
   Checkbox,
+  ViewTeste,
 } from './styles'
 import { data } from '../../temp/products'
 import api from '../../services/api'
@@ -63,6 +64,7 @@ const Sells: React.FC = () => {
   const [products, setProducts] = useState<CartState[]>([])
   const navigation = useNavigation()
   const [popup, setPopup] = useState<boolean>(false)
+  const [qrcode, setQrcode] = useState<boolean>(false)
 
   function handlerPopup() {
     if (!popup) {
@@ -70,6 +72,16 @@ const Sells: React.FC = () => {
       console.log('popup state?', popup)
     } else {
       setPopup(false)
+      console.log('popup state?', popup)
+    }
+  }
+
+  function handlerQrcode() {
+    if (!qrcode) {
+      setQrcode(true)
+      console.log('popup state?', popup)
+    } else {
+      setQrcode(false)
       console.log('popup state?', popup)
     }
   }
@@ -119,9 +131,10 @@ const Sells: React.FC = () => {
               }}
             >
               <BackButton onPress={() => navigation.goBack()}>
-                <Icon name="chevron-left" size={24} color="#9D49D3" />
-                <TodayText> 20/05/2020 </TodayText>
-                <Image
+                <Icon name="menu" size={40} color="#9D49D3" />
+                {/* <TodayText> 20/05/2020 </TodayText> */}
+              </BackButton>
+              <Image
                   source={logoImg}
                   style={{
                     flex: 1,
@@ -131,7 +144,6 @@ const Sells: React.FC = () => {
                     marginHorizontal: 4,
                   }}
                 />
-              </BackButton>
               <Form onSubmit={() => {}}>
                 <SmallInput
                   autoCorrect={false}
@@ -156,27 +168,33 @@ const Sells: React.FC = () => {
             </OrderValue>
           </CartHeader>
           <FlatListHeader>
-            <FlatListHeaderText> ITENS </FlatListHeaderText>
+            <TouchableOpacity onPress={handlerQrcode}>
+              <Icon name="plus-circle" size={30} color="#9D49D3" />
+            </TouchableOpacity>
+            <FlatListHeaderText> PEDIDO </FlatListHeaderText>
             <TouchableOpacity onPress={handlerPopup}>
-              <FlatListHeaderText>DETALHES </FlatListHeaderText>
+              <Icon name="shopping-cart" size={30} color="#9D49D3" />
             </TouchableOpacity>
           </FlatListHeader>
         </Header>
-        <ProductList<any>
-          data={data}
-          keyExtractor={(item: { id: string }) => item.id}
-          ListFooterComponent={<View />}
-          ListFooterComponentStyle={{
-            backgroundColor: '#ff0000',
-            height: 48,
-          }}
-          renderItem={({ item }: { item: CartState }) => (
-            <Product style={{ flex: 1, flexDirection: 'row' }}>
-              <ProductTitle>{item.title}</ProductTitle>
-              <Title>{formatValue(item.price)}</Title>
-            </Product>
-          )}
-        />
+        <ViewTeste>
+          <ProductList<any>
+            data={data}
+            keyExtractor={(item: { id: string }) => item.id}
+            // contentContainerStyle={{flexGrow:0}}
+            ListFooterComponent={<View />}
+            ListFooterComponentStyle={{
+              backgroundColor: '#ff0000',
+              height: 48,
+            }}
+            renderItem={({ item }: { item: CartState }) => (
+              <Product style={{ flex: 1, flexDirection: 'row' }}>
+                <ProductTitle>{item.title}</ProductTitle>
+                <Title>{formatValue(item.price)}</Title>
+              </Product>
+            )}
+          />
+        </ViewTeste>
         {popup && (
           <DetailsPopUp>
             <View>
@@ -192,9 +210,19 @@ const Sells: React.FC = () => {
             <Text>À PRAZO</Text>
           </DetailsPopUp>
         )}
-        <Footer>
+        {qrcode && (
+          <DetailsPopUp>
+            <View>
+              <Title>QRCODE</Title>
+              <TouchableOpacity onPress={handlerQrcode}>
+                <Icon name="minus" size={24} color="#9D49D3" />
+              </TouchableOpacity>
+            </View>
+          </DetailsPopUp>
+        )}
+        {/* <Footer>
           <Button onPress={() => {}}>Adicionar Item</Button>
-        </Footer>
+        </Footer> */}
       </Container>
       {/* </ScrollView>
       </KeyboardAvoidingView> */}
