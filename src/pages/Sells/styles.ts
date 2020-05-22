@@ -1,6 +1,7 @@
 import styled from 'styled-components/native'
 import { getBottomSpace } from 'react-native-iphone-x-helper'
-import { FlatList, CheckBox } from 'react-native'
+import { FlatList } from 'react-native'
+// import { CheckBox } from 'react-native-elements'
 
 interface CartState {
   id: string
@@ -14,53 +15,28 @@ export const Container = styled.View`
   justify-content: center;
   padding: 16px 16px;
 `
-export const ViewTeste = styled.View`
-  flex: 1;
-  /* align-items: center; */
-  justify-content: center;
-  background-color: #144;
-  top: 200px;
-  bottom: 100px;
-  /* padding: 16px 16px; */
-`
-
 export const Header = styled.View`
   position: absolute;
   top: 16px;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  /* height: 28%; */
+  width: 110%;
 `
 export const ClientHeader = styled.View`
   position: relative;
   top: 0px;
   flex: 1;
   flex-direction: row;
-  width: 100%;
-  height: 50%;
+  padding: 0 16px;
 `
-export const BackButton = styled.TouchableOpacity`
-  flex: 1;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-`
-export const TodayText = styled.Text`
-  font-size: 16px;
-  color: #312e38;
-  font-family: 'RobotoSlab-Medium';
-`
+export const MenuButton = styled.TouchableOpacity``
 export const CartHeader = styled.View`
   position: relative;
-  top: 8px;
-  left: 0;
   flex-direction: row;
-  width: 120%;
   background: #ffbafd;
-  margin: 8px 0;
   border-bottom-width: 1px;
   border-color: #9d49d3;
+  margin-top: 8px;
 `
 export const OrderQuantity = styled.View`
   flex: 1;
@@ -74,13 +50,9 @@ export const OrderValue = styled.View`
 `
 export const FlatListHeader = styled.View`
   position: relative;
-  left: 0;
   flex-direction: row;
-  width: 120%;
-  /* height: 35%; */
-  /* background: green; */
-  justify-content: space-evenly;
-  /* align-items: flex-start; */
+  width: 100%;
+  justify-content: space-around;
   align-items: center;
   border-bottom-width: 1px;
   border-color: #9d49d3;
@@ -89,21 +61,17 @@ export const FlatListHeaderText = styled.Text`
   font-size: 24px;
   color: #312e38;
   font-family: 'RobotoSlab-Medium';
-  margin: 8px 0 8px;
+  margin: 8px 0;
 `
+export const ViewTest = styled.View`
+  flex: 1;
+  /* background-color: red; */
+  top: 184px;
+  margin: 0 0 210px;
+  width: 110%;
+`
+export const ProductList = styled(FlatList as new () => FlatList<CartState>)``
 
-export const ProductList = styled(FlatList as new () => FlatList<CartState>)`
-  /* flex: 1; */
-  /* flex-grow: 0; */
-  /* position: relative; */
-  /* top: 200px; */
-  left: 0;
-  /* width: 120%; */
-  padding: 0 16px;
-  /* bottom: 0; */
-  margin: 0 0 50px;
-  height: auto;
-`
 export const SignOutButton = styled.TouchableOpacity`
   position: absolute;
   left: 0;
@@ -124,7 +92,7 @@ export const SignOutButtonText = styled.Text`
   margin-left: 16px;
 `
 export const Title = styled.Text`
-  font-size: 18px;
+  font-size: 16px;
   color: #312e38;
   font-family: 'RobotoSlab-Medium';
   margin: 0 0 8px;
@@ -155,12 +123,11 @@ export const DetailsPopUp = styled.View`
   top: 0px;
   background-color: #ffd0f8;
   z-index: 10;
-  margin: 170px 16px 40px;
-  border-radius: 20px;
+  margin: 150px 8px 40px;
+  border-radius: 16px;
   border-color: #9d49d3;
   border-width: 2px;
 `
-
 export const Footer = styled.View`
   position: absolute;
   left: 0;
@@ -173,10 +140,4 @@ export const Footer = styled.View`
   border-top-width: 1px;
   border-color: #9d49d3;
   padding: 0 16px ${40 + getBottomSpace()}px;
-`
-export const Checkbox = styled(CheckBox)`
-  border-radius: 20px;
-`
-export const Qrcode = styled(CheckBox)`
-  border-radius: 20px;
 `

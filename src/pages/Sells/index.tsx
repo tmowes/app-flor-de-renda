@@ -14,14 +14,15 @@ import {
   Text,
   View,
   FlatList,
+  TouchableOpacity,
 } from 'react-native'
 
+import { CheckBox } from 'react-native-elements'
 import AsyncStorage from '@react-native-community/async-storage'
 import { useNavigation } from '@react-navigation/native'
 import { Form } from '@unform/mobile'
 import Icon from 'react-native-vector-icons/Feather'
 
-import { TouchableOpacity } from 'react-native-gesture-handler'
 import formatValue from '../../utils/formatValue'
 import logoImg from '../../assets/logo.png'
 import SmallInput from '../../components/SmallInput'
@@ -30,12 +31,11 @@ import Button from '../../components/Button'
 import {
   Container,
   SignOutButton,
-  BackButton,
+  MenuButton,
   SignOutButtonText,
   ClientHeader,
   FlatListHeader,
   FlatListHeaderText,
-  TodayText,
   Header,
   CartHeader,
   OrderQuantity,
@@ -47,8 +47,7 @@ import {
   Product,
   Footer,
   DetailsPopUp,
-  Checkbox,
-  ViewTeste,
+  ViewTest,
 } from './styles'
 import { data } from '../../temp/products'
 import api from '../../services/api'
@@ -65,6 +64,7 @@ const Sells: React.FC = () => {
   const navigation = useNavigation()
   const [popup, setPopup] = useState<boolean>(false)
   const [qrcode, setQrcode] = useState<boolean>(false)
+  const [paymentTypeState, setPaymentTypeState] = useState<boolean>(false)
 
   function handlerPopup() {
     if (!popup) {
@@ -73,6 +73,13 @@ const Sells: React.FC = () => {
     } else {
       setPopup(false)
       console.log('popup state?', popup)
+    }
+  }
+  function handlerPaymentState() {
+    if (!paymentTypeState) {
+      setPaymentTypeState(true)
+    } else {
+      setPaymentTypeState(false)
     }
   }
 
@@ -130,20 +137,17 @@ const Sells: React.FC = () => {
                 justifyContent: 'center',
               }}
             >
-              <BackButton onPress={() => navigation.goBack()}>
-                <Icon name="menu" size={40} color="#9D49D3" />
-                {/* <TodayText> 20/05/2020 </TodayText> */}
-              </BackButton>
+              <MenuButton onPress={() => navigation.goBack()}>
+                <Icon name="menu" size={32} color="#9D49D3" />
+              </MenuButton>
               <Image
-                  source={logoImg}
-                  style={{
-                    flex: 1,
-                    resizeMode: 'center',
-                    flexDirection: 'row',
-                    height: 64,
-                    marginHorizontal: 4,
-                  }}
-                />
+                source={logoImg}
+                style={{
+                  flex: 1,
+                  resizeMode: 'center',
+                  height: 56,
+                }}
+              />
               <Form onSubmit={() => {}}>
                 <SmallInput
                   autoCorrect={false}
@@ -177,15 +181,14 @@ const Sells: React.FC = () => {
             </TouchableOpacity>
           </FlatListHeader>
         </Header>
-        <ViewTeste>
+        <ViewTest>
           <ProductList<any>
             data={data}
             keyExtractor={(item: { id: string }) => item.id}
-            // contentContainerStyle={{flexGrow:0}}
             ListFooterComponent={<View />}
             ListFooterComponentStyle={{
-              backgroundColor: '#ff0000',
-              height: 48,
+              backgroundColor: '#730FC3',
+              height: 4,
             }}
             renderItem={({ item }: { item: CartState }) => (
               <Product style={{ flex: 1, flexDirection: 'row' }}>
@@ -194,7 +197,7 @@ const Sells: React.FC = () => {
               </Product>
             )}
           />
-        </ViewTeste>
+        </ViewTest>
         {popup && (
           <DetailsPopUp>
             <View>
@@ -203,10 +206,20 @@ const Sells: React.FC = () => {
                 <Icon name="minus" size={24} color="#9D49D3" />
               </TouchableOpacity>
             </View>
-            <Checkbox />
+            <CheckBox
+              onPress={handlerPaymentState}
+              checkedIcon="dot-circle-o"
+              uncheckedIcon="circle-o"
+              checked={paymentTypeState !== false}
+            />
             <Text>À VISTA</Text>
             <Text>DESCONTO %</Text>
-            <Checkbox />
+            <CheckBox
+              onPress={handlerPaymentState}
+              checkedIcon="dot-circle-o"
+              uncheckedIcon="circle-o"
+              checked={paymentTypeState !== true}
+            />
             <Text>À PRAZO</Text>
           </DetailsPopUp>
         )}
