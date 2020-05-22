@@ -210,7 +210,7 @@ const Sells: React.FC = () => {
               onPress={handlerPaymentState}
               checkedIcon="dot-circle-o"
               uncheckedIcon="circle-o"
-              checked={paymentTypeState !== false}
+              checked={paymentTypeState === false}
             />
             <Text>À VISTA</Text>
             <Text>DESCONTO %</Text>
@@ -218,7 +218,7 @@ const Sells: React.FC = () => {
               onPress={handlerPaymentState}
               checkedIcon="dot-circle-o"
               uncheckedIcon="circle-o"
-              checked={paymentTypeState !== true}
+              checked={paymentTypeState === true}
             />
             <Text>À PRAZO</Text>
           </DetailsPopUp>
