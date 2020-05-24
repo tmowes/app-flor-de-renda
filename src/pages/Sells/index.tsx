@@ -200,34 +200,96 @@ const Sells: React.FC = () => {
         </ViewTest>
         {popup && (
           <DetailsPopUp>
-            <View>
-              <Title>DETALHES</Title>
-              <TouchableOpacity onPress={handlerPopup}>
+            <View style={{
+                // flex: 1,
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <Title style={{
+                fontSize:25,
+              }}>PAGAMENTO</Title>
+              <TouchableOpacity
+                onPress={handlerPopup}
+                style={{
+                  position: "absolute",
+                  right: 10,
+                }}
+                >
                 <Icon name="minus" size={24} color="#9D49D3" />
               </TouchableOpacity>
             </View>
-            <CheckBox
-              onPress={handlerPaymentState}
-              checkedIcon="dot-circle-o"
-              uncheckedIcon="circle-o"
-              checked={paymentTypeState === false}
-            />
-            <Text>À VISTA</Text>
-            <Text>DESCONTO %</Text>
-            <CheckBox
-              onPress={handlerPaymentState}
-              checkedIcon="dot-circle-o"
-              uncheckedIcon="circle-o"
-              checked={paymentTypeState === true}
-            />
-            <Text>À PRAZO</Text>
+            <View>
+              <CheckBox
+                onPress={handlerPaymentState}
+                checkedIcon="dot-circle-o"
+                uncheckedIcon="circle-o"
+                checked={paymentTypeState === false}
+              />
+              <Text>À VISTA</Text>
+              <Text>DESCONTO %</Text>
+              <Form onSubmit={() => {}}>
+                <SmallInput
+                  autoCorrect={false}
+                  autoCapitalize="none"
+                  name="name"
+                  placeholder="Desconto"
+                  // icon="user"
+                  returnKeyType="next"
+                  onSubmitEditing={() => {}}
+                />
+              </Form>
+            </View>
+            <View>
+              <CheckBox
+                onPress={handlerPaymentState}
+                checkedIcon="dot-circle-o"
+                uncheckedIcon="circle-o"
+                checked={paymentTypeState === true}
+              />
+              <Text>À PRAZO</Text>
+              <Form onSubmit={() => {}}>
+                <SmallInput
+                  autoCorrect={false}
+                  autoCapitalize="none"
+                  name="name"
+                  placeholder="Prazo"
+                  // icon="none"
+                  returnKeyType="next"
+                  onSubmitEditing={() => {}}
+                />
+              </Form>
+            </View>
+            <View>
+              <CheckBox
+                // onPress={handlerPaymentState}
+                checkedIcon="dot-circle-o"
+                uncheckedIcon="circle-o"
+                // checked={paymentTypeState === true}
+              />
+              <Text>MERCADORIA EM PROVA</Text>
+              <Text>RETORNO</Text>
+            </View>
           </DetailsPopUp>
         )}
         {qrcode && (
           <DetailsPopUp>
-            <View>
-              <Title>QRCODE</Title>
-              <TouchableOpacity onPress={handlerQrcode}>
+            <View style={{
+                // flex: 1,
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <Title style={{
+                fontSize:25,
+              }}>QRCODE</Title>
+              <TouchableOpacity
+                onPress={handlerQrcode}
+                  style={{
+                    position: "absolute",
+                    right: 10,
+                  }}
+                >
                 <Icon name="minus" size={24} color="#9D49D3" />
               </TouchableOpacity>
             </View>
