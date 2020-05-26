@@ -137,7 +137,8 @@ const Sells: React.FC = () => {
                 justifyContent: 'center',
               }}
             >
-              <MenuButton onPress={() => navigation.goBack()}>
+              {/* navigation.goBack() */}
+              <MenuButton onPress={() => navigation.openDrawer()}>
                 <Icon name="menu" size={32} color="#9D49D3" />
               </MenuButton>
               <Image
@@ -301,10 +302,10 @@ const Sells: React.FC = () => {
       </Container>
       {/* </ScrollView>
       </KeyboardAvoidingView> */}
-      <SignOutButton onPress={() => navigation.navigate('SignIn')}>
+      {/* <SignOutButton onPress={() => navigation.navigate('SignIn')}>
         <Icon name="log-out" size={24} color="#9D49D3" />
         <SignOutButtonText>Sair da conta</SignOutButtonText>
-      </SignOutButton>
+      </SignOutButton> */}
     </>
   )
 }

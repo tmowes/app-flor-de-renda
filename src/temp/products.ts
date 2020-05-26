@@ -46,6 +46,16 @@ export const data: ProductsList[] = [
     price: 400,
   },
   {
+    id: '112399',
+    title: 'CALCINHA COMESTIVEL',
+    price: 300,
+  },
+  {
+    id: '1234598',
+    title: 'SUTIÃ XG PRA COMBINAR',
+    price: 400,
+  },
+  {
     id: '1234568',
     title: '9SUTIÃ XG PRA COMBINAR',
     price: 400,

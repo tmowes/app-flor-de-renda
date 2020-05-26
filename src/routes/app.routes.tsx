@@ -6,6 +6,7 @@ import SignIn from '../pages/SignIn'
 import Dashboard from '../pages/Dashboard'
 import Sells from '../pages/Sells'
 import Admin from '../pages/Admin'
+import { Icon } from 'react-native-vector-icons/Icon';
 
 const App = createDrawerNavigator();
 
@@ -16,21 +17,28 @@ const AppRoutes: React.FC = () => (
     drawerContentOptions={{
       activeTintColor: '#f4EDE8',
       activeBackgroundColor: '#730FC3',
+      inactiveTintColor: '#730FC3',
     }}
-    screenOptions={{
-      // headerShown: false,
-      headerStyle: {
-        backgroundColor: '#9d49d3',
-        maxHeight: 30,
-        height: 60,
-      },
-      headerTintColor: '#f4ede8',
-      headerTitleAlign: 'center',
-      cardStyle: { backgroundColor: '#FFD0F8' },
+    drawerStyle={{
+      backgroundColor:"#FFD0F8",
     }}
+    // screenOptions={{
+    //   // headerShown: false,
+    //   headerStyle: {
+    //     // backgroundColor: '#9d49d3',
+    //     maxHeight: 30,
+    //     height: 60,
+    //   },
+    //   headerTintColor: '#f4ede8',
+    //   headerTitleAlign: 'center',
+    //   cardStyle: { backgroundColor: '#FFD0F8' },
+    // }}
   >
     {/* TODO: REMOVE LOGIN SCREEN FROM HERE */}
-    <App.Screen name="Sells" component={Sells} options={{ title: 'VENDAS' }} />
+    <App.Screen
+      name="Sells"
+      component={Sells}
+      options={{ title: 'VENDAS' }} />
     <App.Screen
       // options={{ headerShown: false }}
       name="SignIn"
