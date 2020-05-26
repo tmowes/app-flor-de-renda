@@ -14,6 +14,7 @@ export const Container = styled.View`
   align-items: center;
   justify-content: center;
   padding: 16px 16px;
+  background: #FFD0F8;
 `
 export const Header = styled.View`
   position: absolute;

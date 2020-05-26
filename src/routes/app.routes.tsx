@@ -7,6 +7,7 @@ import Dashboard from '../pages/Dashboard'
 import Sells from '../pages/Sells'
 import Admin from '../pages/Admin'
 import { Icon } from 'react-native-vector-icons/Icon';
+import { View } from 'react-native';
 
 const App = createDrawerNavigator();
 
@@ -21,6 +22,7 @@ const AppRoutes: React.FC = () => (
     }}
     drawerStyle={{
       backgroundColor:"#FFD0F8",
+
     }}
     // screenOptions={{
     //   // headerShown: false,
@@ -38,7 +40,21 @@ const AppRoutes: React.FC = () => (
     <App.Screen
       name="Sells"
       component={Sells}
-      options={{ title: 'VENDAS' }} />
+      options={{
+        drawerLabel: 'VENDAS/SAÍDAS',
+        drawerIcon:  ({ focused, horizontal, tintColor }) => {
+          const { routeName } = navigation.state;
+          let IconComponent = Ionicons;
+          let iconName;
+          if (routeName === 'Home') {
+            iconName = `ios-information-circle${focused ? '' : '-outline'}`;
+          } else if (routeName === 'Settings') {
+            iconName = `ios-checkmark-circle${focused ? '' : '-outline'}`;
+          }
+          return <IconComponent name={iconName} size={25} color={tintColor} />;
+        },
+      }),
+        }} />
     <App.Screen
       // options={{ headerShown: false }}
       name="SignIn"
