@@ -192,7 +192,14 @@ const Sells: React.FC = () => {
               height: 4,
             }}
             renderItem={({ item }: { item: CartState }) => (
-              <Product style={{ flex: 1, flexDirection: 'row' }}>
+              <Product
+                style={{
+                  flex: 1,
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                }}
+              >
+                <Title>{item.quantity}</Title>
                 <ProductTitle>{item.title}</ProductTitle>
                 <Title>{formatValue(item.price)}</Title>
               </Product>
