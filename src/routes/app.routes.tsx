@@ -1,65 +1,50 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react'
-// import { createStackNavigator } from '@react-navigation/stack'
-import { createDrawerNavigator } from '@react-navigation/drawer';
-
-import SignIn from '../pages/SignIn'
+import { createDrawerNavigator } from '@react-navigation/drawer'
+import Icon from 'react-native-vector-icons/Feather'
+import { View } from 'react-native'
 import Dashboard from '../pages/Dashboard'
 import Sells from '../pages/Sells'
-import Admin from '../pages/Admin'
-import { Icon } from 'react-native-vector-icons/Icon';
-import { View } from 'react-native';
+import SignIn from '../pages/SignIn'
 
-const App = createDrawerNavigator();
+const App = createDrawerNavigator()
 
-// const App = createStackNavigator()
+const drawerHeader = () => (
+  <View>
+    <Icon name="shield-off" size={24} color="green" />
+  </View>
+)
 
 const AppRoutes: React.FC = () => (
   <App.Navigator
+    // drawerContent={drawerHeader}
+    screenOptions={({ route }) => ({
+      drawerIcon: ({ focused, color }) => {
+        let iconName = ''
+        if (route.name === 'Sells') {
+          iconName = focused ? 'shopping-cart' : 'shopping-cart'
+        } else if (route.name === 'Dashboard') {
+          iconName = focused ? 'bar-chart-2' : 'bar-chart-2'
+        } else if (route.name === 'SignIn') {
+          iconName = focused ? 'log-out' : 'log-out'
+        }
+        return <Icon name={iconName} size={24} color={color} />
+      },
+    })}
     drawerContentOptions={{
       activeTintColor: '#f4EDE8',
       activeBackgroundColor: '#730FC3',
       inactiveTintColor: '#730FC3',
     }}
     drawerStyle={{
-      backgroundColor:"#FFD0F8",
-
+      backgroundColor: '#FFD0F8',
     }}
-    // screenOptions={{
-    //   // headerShown: false,
-    //   headerStyle: {
-    //     // backgroundColor: '#9d49d3',
-    //     maxHeight: 30,
-    //     height: 60,
-    //   },
-    //   headerTintColor: '#f4ede8',
-    //   headerTitleAlign: 'center',
-    //   cardStyle: { backgroundColor: '#FFD0F8' },
-    // }}
   >
-    {/* TODO: REMOVE LOGIN SCREEN FROM HERE */}
     <App.Screen
       name="Sells"
       component={Sells}
-      options={{
-        drawerLabel: 'VENDAS/SAÍDAS',
-        drawerIcon:  ({ focused, horizontal, tintColor }) => {
-          const { routeName } = navigation.state;
-          let IconComponent = Ionicons;
-          let iconName;
-          if (routeName === 'Home') {
-            iconName = `ios-information-circle${focused ? '' : '-outline'}`;
-          } else if (routeName === 'Settings') {
-            iconName = `ios-checkmark-circle${focused ? '' : '-outline'}`;
-          }
-          return <IconComponent name={iconName} size={25} color={tintColor} />;
-        },
-      }),
-        }} />
-    <App.Screen
-      // options={{ headerShown: false }}
-      name="SignIn"
-      component={SignIn}
-      options={{ title: 'LOGIN' }}
+      options={{ drawerLabel: 'VENDAS/SAÍDAS' }}
     />
     <App.Screen
       name="Dashboard"
@@ -67,9 +52,9 @@ const AppRoutes: React.FC = () => (
       options={{ title: 'MENU PRINCIPAL' }}
     />
     <App.Screen
-      name="Admin"
-      component={Admin}
-      options={{ title: 'ADMINISTRATIVO' }}
+      name="SignIn"
+      component={SignIn}
+      options={{ drawerLabel: 'SAIR' }}
     />
   </App.Navigator>
 )

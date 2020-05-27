@@ -201,22 +201,28 @@ const Sells: React.FC = () => {
         </ViewTest>
         {popup && (
           <DetailsPopUp>
-            <View style={{
+            <View
+              style={{
                 // flex: 1,
                 flexDirection: 'row',
                 alignItems: 'center',
                 justifyContent: 'center',
-              }}>
-              <Title style={{
-                fontSize:25,
-              }}>PAGAMENTO</Title>
+              }}
+            >
+              <Title
+                style={{
+                  fontSize: 25,
+                }}
+              >
+                PAGAMENTO
+              </Title>
               <TouchableOpacity
                 onPress={handlerPopup}
                 style={{
-                  position: "absolute",
+                  position: 'absolute',
                   right: 10,
                 }}
-                >
+              >
                 <Icon name="minus" size={24} color="#9D49D3" />
               </TouchableOpacity>
             </View>
@@ -275,22 +281,28 @@ const Sells: React.FC = () => {
         )}
         {qrcode && (
           <DetailsPopUp>
-            <View style={{
+            <View
+              style={{
                 // flex: 1,
                 flexDirection: 'row',
                 alignItems: 'center',
                 justifyContent: 'center',
-              }}>
-              <Title style={{
-                fontSize:25,
-              }}>QRCODE</Title>
+              }}
+            >
+              <Title
+                style={{
+                  fontSize: 25,
+                }}
+              >
+                QRCODE
+              </Title>
               <TouchableOpacity
                 onPress={handlerQrcode}
-                  style={{
-                    position: "absolute",
-                    right: 10,
-                  }}
-                >
+                style={{
+                  position: 'absolute',
+                  right: 10,
+                }}
+              >
                 <Icon name="minus" size={24} color="#9D49D3" />
               </TouchableOpacity>
             </View>

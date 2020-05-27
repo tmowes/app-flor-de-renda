@@ -1,7 +1,6 @@
 import styled from 'styled-components/native'
 import { getBottomSpace } from 'react-native-iphone-x-helper'
 import { FlatList } from 'react-native'
-// import { CheckBox } from 'react-native-elements'
 
 interface CartState {
   id: string
@@ -14,7 +13,7 @@ export const Container = styled.View`
   align-items: center;
   justify-content: center;
   padding: 16px 16px;
-  background: #FFD0F8;
+  background: #ffd0f8;
 `
 export const Header = styled.View`
   position: absolute;
@@ -68,7 +67,7 @@ export const ViewTest = styled.View`
   flex: 1;
   /* background-color: red; */
   top: 184px;
-  margin: 0 0 210px;
+  margin: 0 0 190px;
   width: 110%;
 `
 export const ProductList = styled(FlatList as new () => FlatList<CartState>)``
