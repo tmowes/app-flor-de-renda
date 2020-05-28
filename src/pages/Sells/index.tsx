@@ -64,7 +64,7 @@ const Sells: React.FC = () => {
   const navigation = useNavigation()
   const [popup, setPopup] = useState<boolean>(false)
   const [qrcode, setQrcode] = useState<boolean>(false)
-  const [paymentTypeState, setPaymentTypeState] = useState<boolean>(false)
+  const [paymentTypeState, setPaymentTypeState] = useState<number>(0)
 
   function handlerPopup() {
     if (!popup) {
@@ -75,11 +75,13 @@ const Sells: React.FC = () => {
       console.log('popup state?', popup)
     }
   }
-  function handlerPaymentState() {
-    if (!paymentTypeState) {
-      setPaymentTypeState(true)
-    } else {
-      setPaymentTypeState(false)
+  function handlerPaymentState(id: number) {
+    if (id === 0) {
+      setPaymentTypeState(0)
+    } else if (id === 1) {
+      setPaymentTypeState(1)
+    } else if (id === 2) {
+      setPaymentTypeState(2)
     }
   }
 
@@ -233,35 +235,83 @@ const Sells: React.FC = () => {
                 <Icon name="minus" size={24} color="#9D49D3" />
               </TouchableOpacity>
             </View>
+            <View
+              style={{
+                flex: 1,
+                // width: '50%',
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'flex-start',
+                backgroundColor: 'red',
+              }}
+            >
+              <View
+                style={{
+                  flex: 1,
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'flex-start',
+                }}
+              >
+                <CheckBox
+                  onPress={() => {
+                    handlerPaymentState(0)
+                  }}
+                  checkedIcon="dot-circle-o"
+                  uncheckedIcon="circle-o"
+                  checked={paymentTypeState === 0}
+                />
+                <Text>À VISTA</Text>
+              </View>
+              <View
+                style={{
+                  flex: 1,
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'flex-start',
+                }}
+              >
+                <CheckBox
+                  onPress={() => {
+                    handlerPaymentState(1)
+                  }}
+                  checkedIcon="dot-circle-o"
+                  uncheckedIcon="circle-o"
+                  checked={paymentTypeState === 1}
+                />
+                <Text>À PRAZO</Text>
+              </View>
+              <View
+                style={{
+                  flex: 1,
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'flex-start',
+                }}
+              >
+                <CheckBox
+                  onPress={() => {
+                    handlerPaymentState(2)
+                  }}
+                  checkedIcon="dot-circle-o"
+                  uncheckedIcon="circle-o"
+                  checked={paymentTypeState === 2}
+                />
+                <Text>EM PROVA</Text>
+              </View>
+            </View>
             <View>
-              <CheckBox
-                onPress={handlerPaymentState}
-                checkedIcon="dot-circle-o"
-                uncheckedIcon="circle-o"
-                checked={paymentTypeState === false}
-              />
-              <Text>À VISTA</Text>
-              <Text>DESCONTO %</Text>
               <Form onSubmit={() => {}}>
                 <SmallInput
                   autoCorrect={false}
                   autoCapitalize="none"
                   name="name"
-                  placeholder="Desconto"
+                  placeholder="Desconto %"
                   // icon="user"
                   returnKeyType="next"
                   onSubmitEditing={() => {}}
                 />
               </Form>
-            </View>
-            <View>
-              <CheckBox
-                onPress={handlerPaymentState}
-                checkedIcon="dot-circle-o"
-                uncheckedIcon="circle-o"
-                checked={paymentTypeState === true}
-              />
-              <Text>À PRAZO</Text>
               <Form onSubmit={() => {}}>
                 <SmallInput
                   autoCorrect={false}
@@ -273,16 +323,68 @@ const Sells: React.FC = () => {
                   onSubmitEditing={() => {}}
                 />
               </Form>
+              <Text>Acrescimo %</Text>
+              <Form onSubmit={() => {}}>
+                <SmallInput
+                  autoCorrect={false}
+                  autoCapitalize="none"
+                  name="name"
+                  placeholder="Acrescimo %"
+                  // icon="none"
+                  returnKeyType="next"
+                  onSubmitEditing={() => {}}
+                />
+              </Form>
+              <Text>Valor Entrada</Text>
+              <Form onSubmit={() => {}}>
+                <SmallInput
+                  autoCorrect={false}
+                  autoCapitalize="none"
+                  name="name"
+                  placeholder="Entrada"
+                  // icon="none"
+                  returnKeyType="next"
+                  onSubmitEditing={() => {}}
+                />
+              </Form>
+              <Text>Valor Mensal</Text>
+              <Form onSubmit={() => {}}>
+                <SmallInput
+                  autoCorrect={false}
+                  autoCapitalize="none"
+                  name="name"
+                  placeholder="Mensal"
+                  // icon="none"
+                  returnKeyType="next"
+                  onSubmitEditing={() => {}}
+                />
+              </Form>
+              <Text>1ª Parcela</Text>
+              <Form onSubmit={() => {}}>
+                <SmallInput
+                  autoCorrect={false}
+                  autoCapitalize="none"
+                  name="name"
+                  placeholder="Vencimento"
+                  // icon="none"
+                  returnKeyType="next"
+                  onSubmitEditing={() => {}}
+                />
+              </Form>
             </View>
             <View>
-              <CheckBox
-                // onPress={handlerPaymentState}
-                checkedIcon="dot-circle-o"
-                uncheckedIcon="circle-o"
-                // checked={paymentTypeState === true}
-              />
-              <Text>MERCADORIA EM PROVA</Text>
               <Text>RETORNO</Text>
+              <Form onSubmit={() => {}}>
+                <SmallInput
+                  autoCorrect={false}
+                  autoCapitalize="none"
+                  name="name"
+                  placeholder="Retorno"
+                  // icon="none"
+                  returnKeyType="next"
+                  onSubmitEditing={() => {}}
+                />
+              </Form>
             </View>
           </DetailsPopUp>
         )}
