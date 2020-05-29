@@ -35,7 +35,7 @@ export const CartHeader = styled.View`
   flex-direction: row;
   background: #ffbafd;
   border-bottom-width: 1px;
-  border-top-width:1px;
+  border-top-width: 1px;
   border-color: #9d49d3;
   margin-top: 8px;
 `
@@ -115,18 +115,26 @@ export const OrdersTitle = styled.Text`
   font-family: 'RobotoSlab-Medium';
   margin: 0 0 8px;
 `
-export const DetailsPopUp = styled.View`
+export const DetailsPopUpOn = styled.View`
   position: absolute;
   left: 0px;
   right: 0px;
   bottom: 0px;
   top: 0px;
   background-color: #ffd0f8;
-  z-index: 10;
-  margin: 150px 8px 0px;
+  z-index: 20;
+  margin: 150px 8px 32px;
   border-radius: 16px;
   border-color: #9d49d3;
   border-width: 2px;
+`
+export const DetailsPopUpOff = styled.View`
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: transparent;
 `
 export const Footer = styled.View`
   position: absolute;

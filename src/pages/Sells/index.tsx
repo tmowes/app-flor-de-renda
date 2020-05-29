@@ -15,6 +15,8 @@ import {
   View,
   FlatList,
   TouchableOpacity,
+  TouchableWithoutFeedback,
+  TouchableWithoutFeedbackBase,
 } from 'react-native'
 
 import Slider from '@react-native-community/slider'
@@ -24,10 +26,6 @@ import { useNavigation, DrawerActions } from '@react-navigation/native'
 import { Form } from '@unform/mobile'
 import Icon from 'react-native-vector-icons/Feather'
 
-import {
-  TouchableWithoutFeedback,
-  TouchableNativeFeedback,
-} from 'react-native-gesture-handler'
 import formatValue from '../../utils/formatValue'
 import logoImg from '../../assets/logo.png'
 import SmallInput from '../../components/SmallInput'
@@ -52,11 +50,12 @@ import {
   ProductTitle,
   Product,
   Footer,
-  DetailsPopUp,
+  DetailsPopUpOn,
   ViewTest,
   InTest,
   InCash,
   InTerm,
+  DetailsPopUpOff,
 } from './styles'
 import { data } from '../../temp/products'
 import api from '../../services/api'
@@ -75,13 +74,13 @@ const Sells: React.FC = () => {
   const [qrcode, setQrcode] = useState<boolean>(false)
   const [paymentTypeState, setPaymentTypeState] = useState<number>(0)
 
-  const [qtd, setQtd] = useState<number>(2)
+  const [termQuantity, setTermQuantity] = useState<number>(2)
 
-  function handlerQtd(value) {
-    setQtd(value)
+  function handleTermQuantity(value: number) {
+    setTermQuantity(value)
   }
 
-  function handlerPopup() {
+  function handlePopup() {
     if (!popup) {
       setPopup(true)
       console.log('popup state?', popup)
@@ -90,7 +89,7 @@ const Sells: React.FC = () => {
       console.log('popup state?', popup)
     }
   }
-  function handlerPaymentState(checkBoxId: number) {
+  function handlePaymentState(checkBoxId: number) {
     if (checkBoxId === 0) {
       setPaymentTypeState(0)
     } else if (checkBoxId === 1) {
@@ -186,7 +185,7 @@ const Sells: React.FC = () => {
               <Icon name="plus-circle" size={30} color="#9D49D3" />
             </TouchableOpacity>
             <FlatListHeaderText> PEDIDO </FlatListHeaderText>
-            <TouchableOpacity onPress={handlerPopup}>
+            <TouchableOpacity onPress={handlePopup}>
               <Icon name="shopping-cart" size={30} color="#9D49D3" />
             </TouchableOpacity>
           </FlatListHeader>
@@ -216,18 +215,11 @@ const Sells: React.FC = () => {
           />
         </ViewTest>
         {popup && (
-          <TouchableOpacity
-            onPress={handlerPopup}
-            style={{
-              position: 'absolute',
-              left: 0,
-              right: 0,
-              bottom: 0,
-              top: 0,
-              // backgroundColor: 'red',
-            }}
-          >
-            <DetailsPopUp>
+          <>
+            <TouchableWithoutFeedback onPress={handlePopup}>
+              <DetailsPopUpOff />
+            </TouchableWithoutFeedback>
+            <DetailsPopUpOn>
               <View
                 style={{
                   // flex: 1,
@@ -244,7 +236,7 @@ const Sells: React.FC = () => {
                   PAGAMENTO
                 </Title>
                 <TouchableOpacity
-                  onPress={handlerPopup}
+                  onPress={handlePopup}
                   style={{
                     position: 'absolute',
                     right: 16,
@@ -265,7 +257,7 @@ const Sells: React.FC = () => {
               >
                 <CheckBox
                   onPress={() => {
-                    handlerPaymentState(0)
+                    handlePaymentState(0)
                   }}
                   checkedIcon="dot-circle-o"
                   checkedColor="#730fc3"
@@ -281,7 +273,7 @@ const Sells: React.FC = () => {
                 />
                 <CheckBox
                   onPress={() => {
-                    handlerPaymentState(1)
+                    handlePaymentState(1)
                   }}
                   checkedIcon="dot-circle-o"
                   checkedColor="#730fc3"
@@ -297,7 +289,7 @@ const Sells: React.FC = () => {
                 />
                 <CheckBox
                   onPress={() => {
-                    handlerPaymentState(2)
+                    handlePaymentState(2)
                   }}
                   checkedIcon="dot-circle-o"
                   checkedColor="#730fc3"
@@ -330,20 +322,25 @@ const Sells: React.FC = () => {
               {paymentTypeState === 1 && (
                 <InTerm>
                   <Form onSubmit={() => {}}>
-                    <Title>{qtd} parcelas de R$ 500,00</Title>
+                    <Title>
+                      {termQuantity}
+                      {'  '}
+                      parcelas de R$ 500,00
+                    </Title>
                     <Slider
-                      style={{ width: '100%', height: 40 }}
+                      style={{ width: '90%', height: 40 }}
                       step={1}
-                      // value={2}
-                      value={qtd}
-                      onValueChange={qtd => {
-                        handlerQtd(qtd)
+                      onValueChange={termQuantity => {
+                        handleTermQuantity(termQuantity)
                       }}
+                      // onSlidingComplete={termQuantity => {
+                      //   handleTermQuantity(termQuantity)
+                      // }}
+                      value={termQuantity}
                       minimumValue={1}
                       maximumValue={6}
                       minimumTrackTintColor="#FFFFFF"
-                      maximumTrackTintColor="#730fc3"
-                      // onValueChange={(value: number) => <Text>{value}</Text>}
+                      maximumTrackTintColor="#730FC3"
                     />
                     <View
                       style={{
@@ -432,22 +429,23 @@ const Sells: React.FC = () => {
               >
                 Finalizar Venda
               </Button>
-            </DetailsPopUp>
-          </TouchableOpacity>
+              <Image
+                source={logoImg}
+                style={{
+                  flex: 1,
+                  width: '100%',
+                  resizeMode: 'center',
+                }}
+              />
+            </DetailsPopUpOn>
+          </>
         )}
         {qrcode && (
-          <TouchableOpacity
-            onPress={handlerQrcode}
-            style={{
-              position: 'absolute',
-              left: 0,
-              right: 0,
-              bottom: 0,
-              top: 0,
-              // backgroundColor: 'red',
-            }}
-          >
-            <DetailsPopUp>
+          <>
+            <TouchableWithoutFeedback onPress={handlerQrcode}>
+              <DetailsPopUpOff />
+            </TouchableWithoutFeedback>
+            <DetailsPopUpOn>
               <View
                 style={{
                   // flex: 1,
@@ -473,8 +471,8 @@ const Sells: React.FC = () => {
                   <Icon name="minus" size={24} color="#9D49D3" />
                 </TouchableOpacity>
               </View>
-            </DetailsPopUp>
-          </TouchableOpacity>
+            </DetailsPopUpOn>
+          </>
         )}
       </Container>
     </>
