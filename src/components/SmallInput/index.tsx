@@ -16,7 +16,7 @@ import { Container, TextInput, Icon } from './styles'
 
 interface InputProps extends TextInputProperties {
   name: string
-  icon: string
+  icon?: string
 }
 
 interface InputValueRefProps {
@@ -70,11 +70,13 @@ const SmallInput: React.RefForwardingComponent<InputRef, InputProps> = (
 
   return (
     <Container isErrored={!!error} isFocused={isFocused}>
-      <Icon
-        name={icon}
-        size={16}
-        color={isFocused || isFilled ? '#9d49d3' : '#666360'}
-      />
+      {icon && (
+        <Icon
+          name={icon}
+          size={16}
+          color={isFocused || isFilled ? '#9d49d3' : '#666360'}
+        />
+      )}
       <TextInput
         ref={inputElementRef}
         keyboardAppearance="dark"

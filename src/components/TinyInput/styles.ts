@@ -8,12 +8,11 @@ interface ContainerProps {
 }
 
 export const Container = styled.View<ContainerProps>`
-  width: 100%;
-  height: 50px;
-  padding: 0 16px;
+  width: 45%;
+  height: 48px;
+  padding: 0 8px;
   background: #ffbafd;
-  border-radius: 25px;
-  margin-bottom: 8px;
+  border-radius: 16px;
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -31,12 +30,13 @@ export const Container = styled.View<ContainerProps>`
     `}
 `
 export const Icon = styled(FeatherIcon)`
-  margin-right: 16px;
+  margin-right: 8px;
 `
 
 export const TextInput = styled.TextInput`
   flex: 1;
-  color: #312e38;
+  color: #9d49d3;
   font-family: 'RobotoSlab-Regular';
+  font-weight: bold;
   font-size: 16px;
 `

@@ -17,9 +17,10 @@ import {
   TouchableOpacity,
 } from 'react-native'
 
+import Slider from '@react-native-community/slider'
 import { CheckBox } from 'react-native-elements'
 import AsyncStorage from '@react-native-community/async-storage'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, DrawerActions } from '@react-navigation/native'
 import { Form } from '@unform/mobile'
 import Icon from 'react-native-vector-icons/Feather'
 
@@ -27,6 +28,7 @@ import formatValue from '../../utils/formatValue'
 import logoImg from '../../assets/logo.png'
 import SmallInput from '../../components/SmallInput'
 import Button from '../../components/Button'
+import TinyInput from '../../components/TinyInput'
 
 import {
   Container,
@@ -48,6 +50,9 @@ import {
   Footer,
   DetailsPopUp,
   ViewTest,
+  InTest,
+  InCash,
+  InTerm,
 } from './styles'
 import { data } from '../../temp/products'
 import api from '../../services/api'
@@ -75,12 +80,12 @@ const Sells: React.FC = () => {
       console.log('popup state?', popup)
     }
   }
-  function handlerPaymentState(id: number) {
-    if (id === 0) {
+  function handlerPaymentState(checkBoxId: number) {
+    if (checkBoxId === 0) {
       setPaymentTypeState(0)
-    } else if (id === 1) {
+    } else if (checkBoxId === 1) {
       setPaymentTypeState(1)
-    } else if (id === 2) {
+    } else if (checkBoxId === 2) {
       setPaymentTypeState(2)
     }
   }
@@ -119,15 +124,6 @@ const Sells: React.FC = () => {
 
   return (
     <>
-      {/* <KeyboardAvoidingView
-        style={{ flex: 1 }}
-        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-        enabled
-      >
-        <ScrollView
-          keyboardShouldPersistTaps="handled"
-          contentContainerStyle={{ flex: 1 }}
-        > */}
       <Container>
         <Header>
           <ClientHeader>
@@ -139,8 +135,9 @@ const Sells: React.FC = () => {
                 justifyContent: 'center',
               }}
             >
-              {/* navigation.goBack() */}
-              <MenuButton onPress={() => navigation.openDrawer()}>
+              <MenuButton
+                onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+              >
                 <Icon name="menu" size={32} color="#9D49D3" />
               </MenuButton>
               <Image
@@ -152,7 +149,7 @@ const Sells: React.FC = () => {
                 }}
               />
               <Form onSubmit={() => {}}>
-                <SmallInput
+                <TinyInput
                   autoCorrect={false}
                   autoCapitalize="none"
                   name="name"
@@ -220,7 +217,7 @@ const Sells: React.FC = () => {
             >
               <Title
                 style={{
-                  fontSize: 25,
+                  fontSize: 24,
                 }}
               >
                 PAGAMENTO
@@ -237,155 +234,189 @@ const Sells: React.FC = () => {
             </View>
             <View
               style={{
-                flex: 1,
-                // width: '50%',
                 flexDirection: 'row',
                 alignItems: 'center',
-                justifyContent: 'flex-start',
-                backgroundColor: 'red',
+                justifyContent: 'space-evenly',
               }}
             >
-              <View
-                style={{
-                  flex: 1,
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  justifyContent: 'flex-start',
+              <CheckBox
+                onPress={() => {
+                  handlerPaymentState(0)
                 }}
-              >
-                <CheckBox
-                  onPress={() => {
-                    handlerPaymentState(0)
-                  }}
-                  checkedIcon="dot-circle-o"
-                  uncheckedIcon="circle-o"
-                  checked={paymentTypeState === 0}
-                />
-                <Text>À VISTA</Text>
-              </View>
-              <View
-                style={{
-                  flex: 1,
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  justifyContent: 'flex-start',
+                checkedIcon="dot-circle-o"
+                checkedColor="#730fc3"
+                uncheckedIcon="circle-o"
+                uncheckedColor="#9D49D388"
+                checked={paymentTypeState === 0}
+                title="À VISTA"
+                containerStyle={{
+                  backgroundColor: 'transparent',
+                  borderColor: 'transparent',
                 }}
-              >
-                <CheckBox
-                  onPress={() => {
-                    handlerPaymentState(1)
-                  }}
-                  checkedIcon="dot-circle-o"
-                  uncheckedIcon="circle-o"
-                  checked={paymentTypeState === 1}
-                />
-                <Text>À PRAZO</Text>
-              </View>
-              <View
-                style={{
-                  flex: 1,
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  justifyContent: 'flex-start',
+                fontFamily="RobotoSlab-Medium"
+              />
+              <CheckBox
+                onPress={() => {
+                  handlerPaymentState(1)
                 }}
-              >
-                <CheckBox
-                  onPress={() => {
-                    handlerPaymentState(2)
-                  }}
-                  checkedIcon="dot-circle-o"
-                  uncheckedIcon="circle-o"
-                  checked={paymentTypeState === 2}
-                />
-                <Text>EM PROVA</Text>
-              </View>
+                checkedIcon="dot-circle-o"
+                checkedColor="#730fc3"
+                uncheckedIcon="circle-o"
+                uncheckedColor="#9D49D388"
+                checked={paymentTypeState === 1}
+                title="À PRAZO"
+                containerStyle={{
+                  backgroundColor: 'transparent',
+                  borderColor: 'transparent',
+                }}
+                fontFamily="RobotoSlab-Medium"
+              />
+              <CheckBox
+                onPress={() => {
+                  handlerPaymentState(2)
+                }}
+                checkedIcon="dot-circle-o"
+                checkedColor="#730fc3"
+                uncheckedIcon="circle-o"
+                uncheckedColor="#9D49D388"
+                checked={paymentTypeState === 2}
+                title="EM PROVA"
+                containerStyle={{
+                  backgroundColor: 'transparent',
+                  borderColor: 'transparent',
+                }}
+                fontFamily="RobotoSlab-Medium"
+              />
             </View>
-            <View>
-              <Form onSubmit={() => {}}>
-                <SmallInput
-                  autoCorrect={false}
-                  autoCapitalize="none"
-                  name="name"
-                  placeholder="Desconto %"
-                  // icon="user"
-                  returnKeyType="next"
-                  onSubmitEditing={() => {}}
-                />
-              </Form>
-              <Form onSubmit={() => {}}>
-                <SmallInput
-                  autoCorrect={false}
-                  autoCapitalize="none"
-                  name="name"
-                  placeholder="Prazo"
-                  // icon="none"
-                  returnKeyType="next"
-                  onSubmitEditing={() => {}}
-                />
-              </Form>
-              <Text>Acrescimo %</Text>
-              <Form onSubmit={() => {}}>
-                <SmallInput
-                  autoCorrect={false}
-                  autoCapitalize="none"
-                  name="name"
-                  placeholder="Acrescimo %"
-                  // icon="none"
-                  returnKeyType="next"
-                  onSubmitEditing={() => {}}
-                />
-              </Form>
-              <Text>Valor Entrada</Text>
-              <Form onSubmit={() => {}}>
-                <SmallInput
-                  autoCorrect={false}
-                  autoCapitalize="none"
-                  name="name"
-                  placeholder="Entrada"
-                  // icon="none"
-                  returnKeyType="next"
-                  onSubmitEditing={() => {}}
-                />
-              </Form>
-              <Text>Valor Mensal</Text>
-              <Form onSubmit={() => {}}>
-                <SmallInput
-                  autoCorrect={false}
-                  autoCapitalize="none"
-                  name="name"
-                  placeholder="Mensal"
-                  // icon="none"
-                  returnKeyType="next"
-                  onSubmitEditing={() => {}}
-                />
-              </Form>
-              <Text>1ª Parcela</Text>
-              <Form onSubmit={() => {}}>
-                <SmallInput
-                  autoCorrect={false}
-                  autoCapitalize="none"
-                  name="name"
-                  placeholder="Vencimento"
-                  // icon="none"
-                  returnKeyType="next"
-                  onSubmitEditing={() => {}}
-                />
-              </Form>
-            </View>
-            <View>
-              <Text>RETORNO</Text>
-              <Form onSubmit={() => {}}>
-                <SmallInput
-                  autoCorrect={false}
-                  autoCapitalize="none"
-                  name="name"
-                  placeholder="Retorno"
-                  // icon="none"
-                  returnKeyType="next"
-                  onSubmitEditing={() => {}}
-                />
-              </Form>
-            </View>
+            {paymentTypeState === 0 && (
+              <InCash>
+                <Form onSubmit={() => {}}>
+                  <SmallInput
+                    autoCorrect={false}
+                    autoCapitalize="none"
+                    name="name"
+                    placeholder="5,0%"
+                    returnKeyType="next"
+                    onSubmitEditing={() => {}}
+                  />
+                </Form>
+              </InCash>
+            )}
+            {paymentTypeState === 1 && (
+              <InTerm>
+                <Form onSubmit={() => {}}>
+                  <Title>2 parcelas</Title>
+                  <Slider
+                    style={{ width: '100%', height: 40 }}
+                    step={1}
+                    value={2}
+                    minimumValue={1}
+                    maximumValue={6}
+                    minimumTrackTintColor="#FFFFFF"
+                    maximumTrackTintColor="#730fc3"
+                    onValueChange={(value: number) => <Text>{value}</Text>}
+                  />
+                  <View
+                    style={{
+                      width: '100%',
+                      // backgroundColor: 'red',
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      justifyContent: 'space-around',
+                    }}
+                  >
+                    <View
+                      style={{
+                        width: '50%',
+                        alignItems: 'center',
+                        // borderColor: 'green',
+                        // borderWidth: 2,
+                      }}
+                    >
+                      <Title>Juros a.m.</Title>
+                      <SmallInput
+                        autoCorrect={false}
+                        autoCapitalize="none"
+                        name="name"
+                        placeholder="10,0%"
+                        returnKeyType="next"
+                        onSubmitEditing={() => {}}
+                      />
+                    </View>
+                    <View
+                      style={{
+                        width: '50%',
+                        alignItems: 'center',
+                        // borderColor: 'yellow',
+                        // borderWidth: 2,
+                      }}
+                    >
+                      <Title>Valor Entrada</Title>
+                      <SmallInput
+                        autoCorrect={false}
+                        autoCapitalize="none"
+                        name="name"
+                        placeholder="R$ 500,00"
+                        returnKeyType="next"
+                        onSubmitEditing={() => {}}
+                      />
+                    </View>
+                  </View>
+                  <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                    <View
+                      style={{
+                        width: '50%',
+                        alignItems: 'center',
+                      }}
+                    >
+                      <Title>1ª Parcela</Title>
+                      <SmallInput
+                        autoCorrect={false}
+                        autoCapitalize="none"
+                        name="name"
+                        placeholder="10/07/2020"
+                        returnKeyType="next"
+                        onSubmitEditing={() => {}}
+                      />
+                    </View>
+                    <View
+                      style={{
+                        width: '50%',
+                        alignItems: 'center',
+                      }}
+                    >
+                      <Title>Valor Parcelas</Title>
+                      <SmallInput
+                        autoCorrect={false}
+                        autoCapitalize="none"
+                        name="name"
+                        placeholder="R$ 500,00"
+                        returnKeyType="next"
+                        onSubmitEditing={() => {}}
+                      />
+                    </View>
+                  </View>
+                </Form>
+              </InTerm>
+            )}
+            {paymentTypeState === 2 && (
+              <InTest>
+                <Text>RETORNO</Text>
+                <Form onSubmit={() => {}}>
+                  <SmallInput
+                    autoCorrect={false}
+                    autoCapitalize="none"
+                    name="name"
+                    placeholder="10/07/2020"
+                    returnKeyType="next"
+                    onSubmitEditing={() => {}}
+                  />
+                </Form>
+              </InTest>
+            )}
+            <Button icon="dollar-sign" iconColor="#FBFF38" onPress={() => {}}>
+              Finalizar Venda
+            </Button>
           </DetailsPopUp>
         )}
         {qrcode && (
@@ -417,16 +448,7 @@ const Sells: React.FC = () => {
             </View>
           </DetailsPopUp>
         )}
-        {/* <Footer>
-          <Button onPress={() => {}}>Adicionar Item</Button>
-        </Footer> */}
       </Container>
-      {/* </ScrollView>
-      </KeyboardAvoidingView> */}
-      {/* <SignOutButton onPress={() => navigation.navigate('SignIn')}>
-        <Icon name="log-out" size={24} color="#9D49D3" />
-        <SignOutButtonText>Sair da conta</SignOutButtonText>
-      </SignOutButton> */}
     </>
   )
 }

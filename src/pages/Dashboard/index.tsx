@@ -50,9 +50,6 @@ const Dashboard: React.FC = () => {
                 width: '90%',
               }}
             />
-            {/* <View>
-              <Title />
-            </View> */}
             <Button onPress={() => navigation.navigate('Sells')}>Vendas</Button>
             <Button onPress={() => {}}>Compras</Button>
             <Button onPress={() => {}}>Gráficos</Button>
@@ -63,7 +60,6 @@ const Dashboard: React.FC = () => {
         </ScrollView>
       </KeyboardAvoidingView>
       <SignOutButton onPress={() => navigation.navigate('SignIn')}>
-        {/* <SignOutButton onPress={signOut}> */}
         <Icon name="log-out" size={24} color="#9D49D3" />
         <SignOutButtonText>Sair da conta</SignOutButtonText>
       </SignOutButton>

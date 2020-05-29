@@ -8,8 +8,8 @@ interface ContainerProps {
 }
 
 export const Container = styled.View<ContainerProps>`
-  width: 50%;
-  height: 48px;
+  width: 57%;
+  height: 40px;
   padding: 0 8px;
   background: #ffbafd;
   border-radius: 16px;
@@ -36,6 +36,7 @@ export const Icon = styled(FeatherIcon)`
 export const TextInput = styled.TextInput`
   flex: 1;
   color: #312e38;
+  text-align: center;
   font-family: 'RobotoSlab-Regular';
-  font-size: 16px;
+  font-size: 14px;
 `

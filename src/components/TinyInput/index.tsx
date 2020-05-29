@@ -16,7 +16,7 @@ import { Container, TextInput, Icon } from './styles'
 
 interface InputProps extends TextInputProperties {
   name: string
-  icon: string
+  icon?: string
 }
 
 interface InputValueRefProps {
@@ -27,7 +27,7 @@ interface InputRef {
   focus(): void
 }
 
-const Checkbox: React.RefForwardingComponent<InputRef, InputProps> = (
+const TinyInput: React.RefForwardingComponent<InputRef, InputProps> = (
   { name, icon, ...rest },
   ref,
 ) => {
@@ -70,11 +70,13 @@ const Checkbox: React.RefForwardingComponent<InputRef, InputProps> = (
 
   return (
     <Container isErrored={!!error} isFocused={isFocused}>
-      <Icon
-        name={icon}
-        size={20}
-        color={isFocused || isFilled ? '#9d49d3' : '#666360'}
-      />
+      {icon && (
+        <Icon
+          name={icon}
+          size={16}
+          color={isFocused || isFilled ? '#9d49d3' : '#666360'}
+        />
+      )}
       <TextInput
         ref={inputElementRef}
         keyboardAppearance="dark"
@@ -91,4 +93,4 @@ const Checkbox: React.RefForwardingComponent<InputRef, InputProps> = (
   )
 }
 
-export default forwardRef(Checkbox)
+export default forwardRef(TinyInput)

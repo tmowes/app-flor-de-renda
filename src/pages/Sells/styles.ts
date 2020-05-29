@@ -65,7 +65,6 @@ export const FlatListHeaderText = styled.Text`
 `
 export const ViewTest = styled.View`
   flex: 1;
-  /* background-color: red; */
   top: 184px;
   margin: 0 0 190px;
   width: 110%;
@@ -92,10 +91,10 @@ export const SignOutButtonText = styled.Text`
   margin-left: 16px;
 `
 export const Title = styled.Text`
-  font-size: 16px;
+  font-size: 14px;
   color: #312e38;
   font-family: 'RobotoSlab-Medium';
-  margin: 0 0 8px;
+  /* margin: 0 0 8px; */
 `
 export const ProductTitle = styled.Text`
   font-size: 16px;
@@ -123,7 +122,7 @@ export const DetailsPopUp = styled.View`
   top: 0px;
   background-color: #ffd0f8;
   z-index: 10;
-  margin: 150px 8px 40px;
+  margin: 150px 8px 0px;
   border-radius: 16px;
   border-color: #9d49d3;
   border-width: 2px;
@@ -140,4 +139,16 @@ export const Footer = styled.View`
   border-top-width: 1px;
   border-color: #9d49d3;
   padding: 0 16px ${40 + getBottomSpace()}px;
+`
+export const InCash = styled.View`
+  align-items: center;
+  justify-content: center;
+`
+export const InTerm = styled.View`
+  align-items: center;
+  justify-content: center;
+`
+export const InTest = styled.View`
+  align-items: center;
+  justify-content: center;
 `

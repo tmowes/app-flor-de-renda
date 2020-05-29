@@ -25,7 +25,7 @@ const App = createDrawerNavigator()
 //         justifyContent: 'center',
 //       }}
 //     >
-//       <Text>teste</Text>
+//       <Text>Test</Text>
 //     </View>
 //   )
 // }
