@@ -123,7 +123,7 @@ export const DetailsPopUpOn = styled.View`
   top: 0px;
   background-color: #ffd0f8;
   z-index: 20;
-  margin: 150px 8px 32px;
+  margin: 150px 8px 0px;
   border-radius: 16px;
   border-color: #9d49d3;
   border-width: 2px;
