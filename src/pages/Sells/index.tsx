@@ -226,7 +226,7 @@ const Sells: React.FC = () => {
                 onPress={handlerPopup}
                 style={{
                   position: 'absolute',
-                  right: 10,
+                  right: 16,
                 }}
               >
                 <Icon name="minus" size={24} color="#9D49D3" />
@@ -234,6 +234,9 @@ const Sells: React.FC = () => {
             </View>
             <View
               style={{
+                position: 'relative',
+                left: 16,
+                width: '90%',
                 flexDirection: 'row',
                 alignItems: 'center',
                 justifyContent: 'space-evenly',
@@ -291,6 +294,7 @@ const Sells: React.FC = () => {
             {paymentTypeState === 0 && (
               <InCash>
                 <Form onSubmit={() => {}}>
+                  <Title>Desconto</Title>
                   <SmallInput
                     autoCorrect={false}
                     autoCapitalize="none"
@@ -305,7 +309,7 @@ const Sells: React.FC = () => {
             {paymentTypeState === 1 && (
               <InTerm>
                 <Form onSubmit={() => {}}>
-                  <Title>2 parcelas</Title>
+                  <Title>2 parcelas de R$ 500,00</Title>
                   <Slider
                     style={{ width: '100%', height: 40 }}
                     step={1}
@@ -318,19 +322,20 @@ const Sells: React.FC = () => {
                   />
                   <View
                     style={{
+                      flex: 1,
+                      position: 'absolute',
+                      top: 60,
                       width: '100%',
                       // backgroundColor: 'red',
                       flexDirection: 'row',
-                      alignItems: 'center',
+                      alignItems: 'stretch',
                       justifyContent: 'space-around',
                     }}
                   >
                     <View
                       style={{
-                        width: '50%',
+                        width: '33%',
                         alignItems: 'center',
-                        // borderColor: 'green',
-                        // borderWidth: 2,
                       }}
                     >
                       <Title>Juros a.m.</Title>
@@ -338,31 +343,11 @@ const Sells: React.FC = () => {
                         autoCorrect={false}
                         autoCapitalize="none"
                         name="name"
-                        placeholder="10,0%"
+                        placeholder="2,5%"
                         returnKeyType="next"
                         onSubmitEditing={() => {}}
                       />
                     </View>
-                    <View
-                      style={{
-                        width: '50%',
-                        alignItems: 'center',
-                        // borderColor: 'yellow',
-                        // borderWidth: 2,
-                      }}
-                    >
-                      <Title>Valor Entrada</Title>
-                      <SmallInput
-                        autoCorrect={false}
-                        autoCapitalize="none"
-                        name="name"
-                        placeholder="R$ 500,00"
-                        returnKeyType="next"
-                        onSubmitEditing={() => {}}
-                      />
-                    </View>
-                  </View>
-                  <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                     <View
                       style={{
                         width: '50%',
@@ -381,11 +366,11 @@ const Sells: React.FC = () => {
                     </View>
                     <View
                       style={{
-                        width: '50%',
+                        width: '40%',
                         alignItems: 'center',
                       }}
                     >
-                      <Title>Valor Parcelas</Title>
+                      <Title>Valor Entrada</Title>
                       <SmallInput
                         autoCorrect={false}
                         autoCapitalize="none"
@@ -401,7 +386,7 @@ const Sells: React.FC = () => {
             )}
             {paymentTypeState === 2 && (
               <InTest>
-                <Text>RETORNO</Text>
+                <Title>Valor Entrada</Title>
                 <Form onSubmit={() => {}}>
                   <SmallInput
                     autoCorrect={false}
@@ -414,7 +399,12 @@ const Sells: React.FC = () => {
                 </Form>
               </InTest>
             )}
-            <Button icon="dollar-sign" iconColor="#FBFF38" onPress={() => {}}>
+            <Button
+              style={{ marginTop: 72 }}
+              icon="dollar-sign"
+              iconColor="#FBFF38"
+              onPress={() => {}}
+            >
               Finalizar Venda
             </Button>
           </DetailsPopUp>
