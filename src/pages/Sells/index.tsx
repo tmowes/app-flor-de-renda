@@ -24,6 +24,10 @@ import { useNavigation, DrawerActions } from '@react-navigation/native'
 import { Form } from '@unform/mobile'
 import Icon from 'react-native-vector-icons/Feather'
 
+import {
+  TouchableWithoutFeedback,
+  TouchableNativeFeedback,
+} from 'react-native-gesture-handler'
 import formatValue from '../../utils/formatValue'
 import logoImg from '../../assets/logo.png'
 import SmallInput from '../../components/SmallInput'
@@ -70,6 +74,12 @@ const Sells: React.FC = () => {
   const [popup, setPopup] = useState<boolean>(false)
   const [qrcode, setQrcode] = useState<boolean>(false)
   const [paymentTypeState, setPaymentTypeState] = useState<number>(0)
+
+  const [qtd, setQtd] = useState<number>(2)
+
+  function handlerQtd(value) {
+    setQtd(value)
+  }
 
   function handlerPopup() {
     if (!popup) {
@@ -206,237 +216,265 @@ const Sells: React.FC = () => {
           />
         </ViewTest>
         {popup && (
-          <DetailsPopUp>
-            <View
-              style={{
-                // flex: 1,
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              <Title
+          <TouchableOpacity
+            onPress={handlerPopup}
+            style={{
+              position: 'absolute',
+              left: 0,
+              right: 0,
+              bottom: 0,
+              top: 0,
+              // backgroundColor: 'red',
+            }}
+          >
+            <DetailsPopUp>
+              <View
                 style={{
-                  fontSize: 24,
+                  // flex: 1,
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'center',
                 }}
               >
-                PAGAMENTO
-              </Title>
-              <TouchableOpacity
-                onPress={handlerPopup}
+                <Title
+                  style={{
+                    fontSize: 24,
+                  }}
+                >
+                  PAGAMENTO
+                </Title>
+                <TouchableOpacity
+                  onPress={handlerPopup}
+                  style={{
+                    position: 'absolute',
+                    right: 16,
+                  }}
+                >
+                  <Icon name="minus" size={24} color="#9D49D3" />
+                </TouchableOpacity>
+              </View>
+              <View
                 style={{
-                  position: 'absolute',
-                  right: 16,
+                  position: 'relative',
+                  left: 16,
+                  width: '90%',
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'space-evenly',
                 }}
               >
-                <Icon name="minus" size={24} color="#9D49D3" />
-              </TouchableOpacity>
-            </View>
-            <View
-              style={{
-                position: 'relative',
-                left: 16,
-                width: '90%',
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'space-evenly',
-              }}
-            >
-              <CheckBox
-                onPress={() => {
-                  handlerPaymentState(0)
-                }}
-                checkedIcon="dot-circle-o"
-                checkedColor="#730fc3"
-                uncheckedIcon="circle-o"
-                uncheckedColor="#9D49D388"
-                checked={paymentTypeState === 0}
-                title="À VISTA"
-                containerStyle={{
-                  backgroundColor: 'transparent',
-                  borderColor: 'transparent',
-                }}
-                fontFamily="RobotoSlab-Medium"
-              />
-              <CheckBox
-                onPress={() => {
-                  handlerPaymentState(1)
-                }}
-                checkedIcon="dot-circle-o"
-                checkedColor="#730fc3"
-                uncheckedIcon="circle-o"
-                uncheckedColor="#9D49D388"
-                checked={paymentTypeState === 1}
-                title="À PRAZO"
-                containerStyle={{
-                  backgroundColor: 'transparent',
-                  borderColor: 'transparent',
-                }}
-                fontFamily="RobotoSlab-Medium"
-              />
-              <CheckBox
-                onPress={() => {
-                  handlerPaymentState(2)
-                }}
-                checkedIcon="dot-circle-o"
-                checkedColor="#730fc3"
-                uncheckedIcon="circle-o"
-                uncheckedColor="#9D49D388"
-                checked={paymentTypeState === 2}
-                title="EM PROVA"
-                containerStyle={{
-                  backgroundColor: 'transparent',
-                  borderColor: 'transparent',
-                }}
-                fontFamily="RobotoSlab-Medium"
-              />
-            </View>
-            {paymentTypeState === 0 && (
-              <InCash>
-                <Form onSubmit={() => {}}>
-                  <Title>Desconto</Title>
-                  <SmallInput
-                    autoCorrect={false}
-                    autoCapitalize="none"
-                    name="name"
-                    placeholder="5,0%"
-                    returnKeyType="next"
-                    onSubmitEditing={() => {}}
-                  />
-                </Form>
-              </InCash>
-            )}
-            {paymentTypeState === 1 && (
-              <InTerm>
-                <Form onSubmit={() => {}}>
-                  <Title>2 parcelas de R$ 500,00</Title>
-                  <Slider
-                    style={{ width: '100%', height: 40 }}
-                    step={1}
-                    value={2}
-                    minimumValue={1}
-                    maximumValue={6}
-                    minimumTrackTintColor="#FFFFFF"
-                    maximumTrackTintColor="#730fc3"
-                    onValueChange={(value: number) => <Text>{value}</Text>}
-                  />
-                  <View
-                    style={{
-                      flex: 1,
-                      position: 'absolute',
-                      top: 60,
-                      width: '100%',
-                      // backgroundColor: 'red',
-                      flexDirection: 'row',
-                      alignItems: 'stretch',
-                      justifyContent: 'space-around',
-                    }}
-                  >
+                <CheckBox
+                  onPress={() => {
+                    handlerPaymentState(0)
+                  }}
+                  checkedIcon="dot-circle-o"
+                  checkedColor="#730fc3"
+                  uncheckedIcon="circle-o"
+                  uncheckedColor="#9D49D388"
+                  checked={paymentTypeState === 0}
+                  title="À VISTA"
+                  containerStyle={{
+                    backgroundColor: 'transparent',
+                    borderColor: 'transparent',
+                  }}
+                  fontFamily="RobotoSlab-Medium"
+                />
+                <CheckBox
+                  onPress={() => {
+                    handlerPaymentState(1)
+                  }}
+                  checkedIcon="dot-circle-o"
+                  checkedColor="#730fc3"
+                  uncheckedIcon="circle-o"
+                  uncheckedColor="#9D49D388"
+                  checked={paymentTypeState === 1}
+                  title="À PRAZO"
+                  containerStyle={{
+                    backgroundColor: 'transparent',
+                    borderColor: 'transparent',
+                  }}
+                  fontFamily="RobotoSlab-Medium"
+                />
+                <CheckBox
+                  onPress={() => {
+                    handlerPaymentState(2)
+                  }}
+                  checkedIcon="dot-circle-o"
+                  checkedColor="#730fc3"
+                  uncheckedIcon="circle-o"
+                  uncheckedColor="#9D49D388"
+                  checked={paymentTypeState === 2}
+                  title="EM PROVA"
+                  containerStyle={{
+                    backgroundColor: 'transparent',
+                    borderColor: 'transparent',
+                  }}
+                  fontFamily="RobotoSlab-Medium"
+                />
+              </View>
+              {paymentTypeState === 0 && (
+                <InCash>
+                  <Form onSubmit={() => {}}>
+                    <Title>Desconto</Title>
+                    <SmallInput
+                      autoCorrect={false}
+                      autoCapitalize="none"
+                      name="name"
+                      placeholder="5,0%"
+                      returnKeyType="next"
+                      onSubmitEditing={() => {}}
+                    />
+                  </Form>
+                </InCash>
+              )}
+              {paymentTypeState === 1 && (
+                <InTerm>
+                  <Form onSubmit={() => {}}>
+                    <Title>{qtd} parcelas de R$ 500,00</Title>
+                    <Slider
+                      style={{ width: '100%', height: 40 }}
+                      step={1}
+                      // value={2}
+                      value={qtd}
+                      onValueChange={qtd => {
+                        handlerQtd(qtd)
+                      }}
+                      minimumValue={1}
+                      maximumValue={6}
+                      minimumTrackTintColor="#FFFFFF"
+                      maximumTrackTintColor="#730fc3"
+                      // onValueChange={(value: number) => <Text>{value}</Text>}
+                    />
                     <View
                       style={{
-                        width: '33%',
-                        alignItems: 'center',
+                        flex: 1,
+                        position: 'absolute',
+                        top: 60,
+                        width: '100%',
+                        // backgroundColor: 'red',
+                        flexDirection: 'row',
+                        alignItems: 'stretch',
+                        justifyContent: 'space-around',
                       }}
                     >
-                      <Title>Juros a.m.</Title>
-                      <SmallInput
-                        autoCorrect={false}
-                        autoCapitalize="none"
-                        name="name"
-                        placeholder="2,5%"
-                        returnKeyType="next"
-                        onSubmitEditing={() => {}}
-                      />
+                      <View
+                        style={{
+                          width: '33%',
+                          alignItems: 'center',
+                        }}
+                      >
+                        <Title>Juros a.m.</Title>
+                        <SmallInput
+                          autoCorrect={false}
+                          autoCapitalize="none"
+                          name="name"
+                          placeholder="2,5%"
+                          returnKeyType="next"
+                          onSubmitEditing={() => {}}
+                        />
+                      </View>
+                      <View
+                        style={{
+                          width: '50%',
+                          alignItems: 'center',
+                        }}
+                      >
+                        <Title>1ª Parcela</Title>
+                        <SmallInput
+                          autoCorrect={false}
+                          autoCapitalize="none"
+                          name="name"
+                          placeholder="10/07/2020"
+                          returnKeyType="next"
+                          onSubmitEditing={() => {}}
+                        />
+                      </View>
+                      <View
+                        style={{
+                          width: '40%',
+                          alignItems: 'center',
+                        }}
+                      >
+                        <Title>Valor Entrada</Title>
+                        <SmallInput
+                          autoCorrect={false}
+                          autoCapitalize="none"
+                          name="name"
+                          placeholder="R$ 500,00"
+                          returnKeyType="next"
+                          onSubmitEditing={() => {}}
+                        />
+                      </View>
                     </View>
-                    <View
-                      style={{
-                        width: '50%',
-                        alignItems: 'center',
-                      }}
-                    >
-                      <Title>1ª Parcela</Title>
-                      <SmallInput
-                        autoCorrect={false}
-                        autoCapitalize="none"
-                        name="name"
-                        placeholder="10/07/2020"
-                        returnKeyType="next"
-                        onSubmitEditing={() => {}}
-                      />
-                    </View>
-                    <View
-                      style={{
-                        width: '40%',
-                        alignItems: 'center',
-                      }}
-                    >
-                      <Title>Valor Entrada</Title>
-                      <SmallInput
-                        autoCorrect={false}
-                        autoCapitalize="none"
-                        name="name"
-                        placeholder="R$ 500,00"
-                        returnKeyType="next"
-                        onSubmitEditing={() => {}}
-                      />
-                    </View>
-                  </View>
-                </Form>
-              </InTerm>
-            )}
-            {paymentTypeState === 2 && (
-              <InTest>
-                <Title>Valor Entrada</Title>
-                <Form onSubmit={() => {}}>
-                  <SmallInput
-                    autoCorrect={false}
-                    autoCapitalize="none"
-                    name="name"
-                    placeholder="10/07/2020"
-                    returnKeyType="next"
-                    onSubmitEditing={() => {}}
-                  />
-                </Form>
-              </InTest>
-            )}
-            <Button
-              style={{ marginTop: 72 }}
-              icon="dollar-sign"
-              iconColor="#FBFF38"
-              onPress={() => {}}
-            >
-              Finalizar Venda
-            </Button>
-          </DetailsPopUp>
+                  </Form>
+                </InTerm>
+              )}
+              {paymentTypeState === 2 && (
+                <InTest>
+                  <Title>Data Retorno</Title>
+                  <Form onSubmit={() => {}}>
+                    <SmallInput
+                      autoCorrect={false}
+                      autoCapitalize="none"
+                      name="name"
+                      placeholder="10/07/2020"
+                      returnKeyType="next"
+                      onSubmitEditing={() => {}}
+                    />
+                  </Form>
+                </InTest>
+              )}
+              <Button
+                style={{ marginTop: 72 }}
+                icon="dollar-sign"
+                iconColor="#FBFF38"
+                onPress={() => {}}
+              >
+                Finalizar Venda
+              </Button>
+            </DetailsPopUp>
+          </TouchableOpacity>
         )}
         {qrcode && (
-          <DetailsPopUp>
-            <View
-              style={{
-                // flex: 1,
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              <Title
+          <TouchableOpacity
+            onPress={handlerQrcode}
+            style={{
+              position: 'absolute',
+              left: 0,
+              right: 0,
+              bottom: 0,
+              top: 0,
+              // backgroundColor: 'red',
+            }}
+          >
+            <DetailsPopUp>
+              <View
                 style={{
-                  fontSize: 25,
+                  // flex: 1,
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'center',
                 }}
               >
-                QRCODE
-              </Title>
-              <TouchableOpacity
-                onPress={handlerQrcode}
-                style={{
-                  position: 'absolute',
-                  right: 10,
-                }}
-              >
-                <Icon name="minus" size={24} color="#9D49D3" />
-              </TouchableOpacity>
-            </View>
-          </DetailsPopUp>
+                <Title
+                  style={{
+                    fontSize: 25,
+                  }}
+                >
+                  QRCODE
+                </Title>
+                <TouchableOpacity
+                  onPress={handlerQrcode}
+                  style={{
+                    position: 'absolute',
+                    right: 10,
+                  }}
+                >
+                  <Icon name="minus" size={24} color="#9D49D3" />
+                </TouchableOpacity>
+              </View>
+            </DetailsPopUp>
+          </TouchableOpacity>
         )}
       </Container>
     </>

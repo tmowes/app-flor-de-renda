@@ -4,8 +4,11 @@ import React from 'react'
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import Icon from 'react-native-vector-icons/Feather'
 import { View, Text } from 'react-native'
-import Dashboard from '../pages/Dashboard'
+
 import Sells from '../pages/Sells'
+import Buys from '../pages/Buys'
+import Admin from '../pages/Admin'
+import Dashboard from '../pages/Dashboard'
 import SignIn from '../pages/SignIn'
 
 const App = createDrawerNavigator()
@@ -71,7 +74,7 @@ const AppRoutes: React.FC = () => (
     />
     <App.Screen
       name="Buys"
-      component={Dashboard}
+      component={Buys}
       options={{ title: 'COMPRAS/ENTRADA' }}
     />
     <App.Screen
@@ -91,7 +94,7 @@ const AppRoutes: React.FC = () => (
     />
     <App.Screen
       name="Register"
-      component={Dashboard}
+      component={Admin}
       options={{ title: 'CADASTROS' }}
     />
     <App.Screen

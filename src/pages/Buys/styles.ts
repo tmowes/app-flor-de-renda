@@ -12,7 +12,7 @@ export const Container = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
-  padding: 16px 16px;
+  padding: 0px 0px;
   background: #ffd0f8;
 `
 export const Header = styled.View`
@@ -20,7 +20,7 @@ export const Header = styled.View`
   top: 16px;
   align-items: center;
   justify-content: center;
-  width: 110%;
+  width: 100%;
 `
 export const ClientHeader = styled.View`
   position: relative;
@@ -35,7 +35,6 @@ export const CartHeader = styled.View`
   flex-direction: row;
   background: #ffbafd;
   border-bottom-width: 1px;
-  border-top-width:1px;
   border-color: #9d49d3;
   margin-top: 8px;
 `
@@ -66,9 +65,11 @@ export const FlatListHeaderText = styled.Text`
 `
 export const ViewTest = styled.View`
   flex: 1;
-  top: 184px;
-  margin: 0 0 190px;
-  width: 110%;
+  top: 80px;
+  margin: 0 0 100px;
+  width: 100%;
+  border-color: #9d49d3;
+  border-top-width: 1;
 `
 export const ProductList = styled(FlatList as new () => FlatList<CartState>)``
 
