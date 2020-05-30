@@ -69,7 +69,7 @@ export const ViewTest = styled.View`
   margin: 0 0 100px;
   width: 100%;
   border-color: #9d49d3;
-  border-top-width: 1;
+  border-top-width: 1px;
 `
 export const ProductList = styled(FlatList as new () => FlatList<CartState>)``
 

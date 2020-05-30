@@ -67,6 +67,36 @@ export const data: ProductsList[] = [
     price: 400,
   },
   {
+    id: '5',
+    quantity: 0,
+    title: 'SUTIÃ XG PRA COMBINAR',
+    price: 400,
+  },
+  {
+    id: '4',
+    quantity: 0,
+    title: 'SUTIÃ XG PRA COMBINAR',
+    price: 400,
+  },
+  {
+    id: '3',
+    quantity: 0,
+    title: 'SUTIÃ XG PRA COMBINAR',
+    price: 400,
+  },
+  {
+    id: '2',
+    quantity: 0,
+    title: 'SUTIÃ XG PRA COMBINAR',
+    price: 400,
+  },
+  {
+    id: '1',
+    quantity: 0,
+    title: 'SUTIÃ XG PRA COMBINAR',
+    price: 400,
+  },
+  {
     id: '1234568',
     quantity: 0,
     title: '9SUTIÃ XG PRA COMBINAR',
