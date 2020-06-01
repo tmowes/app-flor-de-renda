@@ -24,10 +24,6 @@ import { useNavigation, DrawerActions } from '@react-navigation/native'
 import { Form } from '@unform/mobile'
 import Icon from 'react-native-vector-icons/Feather'
 
-import {
-  TouchableWithoutFeedback,
-  TouchableNativeFeedback,
-} from 'react-native-gesture-handler'
 import formatValue from '../../utils/formatValue'
 import logoImg from '../../assets/logo.png'
 import SmallInput from '../../components/SmallInput'

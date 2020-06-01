@@ -13,14 +13,16 @@ export const Container = styled.View`
   align-items: center;
   justify-content: center;
   padding: 16px 16px;
-  background: #ffd0f8;
+  background: #9d49d3;
 `
 export const Header = styled.View`
   position: absolute;
-  top: 16px;
+  top: 5px;
   align-items: center;
   justify-content: center;
   width: 110%;
+  background: #ffd0f8;
+  padding-top: 12px;
 `
 export const ClientHeader = styled.View`
   position: relative;
@@ -55,8 +57,8 @@ export const FlatListHeader = styled.View`
   width: 100%;
   justify-content: space-around;
   align-items: center;
-  border-bottom-width: 1px;
-  border-color: #9d49d3;
+  /* border-bottom-width: 1px; */
+  /* border-color: red; */
 `
 export const FlatListHeaderText = styled.Text`
   font-size: 24px;
@@ -66,9 +68,13 @@ export const FlatListHeaderText = styled.Text`
 `
 export const ViewTest = styled.View`
   flex: 1;
-  top: 184px;
-  margin: 0 0 190px;
+  top: 186px;
+  margin: 0 0 178px;
   width: 110%;
+  background: #ffd0f8;
+  /* border-radius: 16px; */
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
 `
 export const ProductList = styled(FlatList as new () => FlatList<CartState>)``
 
@@ -123,7 +129,7 @@ export const DetailsPopUpOn = styled.View`
   top: 0px;
   background-color: #ffd0f8;
   z-index: 20;
-  margin: 150px 8px 0px;
+  margin: 150px 8px 8px;
   border-radius: 16px;
   border-color: #9d49d3;
   border-width: 2px;

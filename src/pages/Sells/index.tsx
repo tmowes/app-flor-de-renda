@@ -83,10 +83,8 @@ const Sells: React.FC = () => {
   function handlePopup() {
     if (!popup) {
       setPopup(true)
-      console.log('popup state?', popup)
     } else {
       setPopup(false)
-      console.log('popup state?', popup)
     }
   }
   function handlePaymentState(checkBoxId: number) {
@@ -102,34 +100,10 @@ const Sells: React.FC = () => {
   function handlerQrcode() {
     if (!qrcode) {
       setQrcode(true)
-      console.log('popup state?', popup)
     } else {
       setQrcode(false)
-      console.log('popup state?', popup)
     }
   }
-
-  // useEffect(() => {
-  //   async function loadProducts(): Promise<void> {
-  //     // DONE LOAD PRODUCTS FROM ASYNC STORAGE
-  //     const storageProducts = await AsyncStorage.getItem(
-  //       '@AppFlorDeRenda:products',
-  //     )
-  //     if (storageProducts) {
-  //       setProducts([...JSON.parse(storageProducts)])
-  //     }
-  //   }
-  //   loadProducts()
-  // }, [])
-
-  // useEffect(() => {
-  //   async function loadProducts(): Promise<void> {
-  //     // DONE LOAD PRODUCTS FROM API
-  //     const response = await api.get('/products')
-  //     setProducts(response.data)
-  //   }
-  //   loadProducts()
-  // }, [])
 
   return (
     <>
@@ -196,7 +170,7 @@ const Sells: React.FC = () => {
             keyExtractor={(item: { id: string }) => item.id}
             ListFooterComponent={<View />}
             ListFooterComponentStyle={{
-              backgroundColor: '#730FC3',
+              backgroundColor: '#9d49d3',
               height: 4,
             }}
             renderItem={({ item }: { item: CartState }) => (
@@ -222,7 +196,6 @@ const Sells: React.FC = () => {
             <DetailsPopUpOn>
               <View
                 style={{
-                  // flex: 1,
                   flexDirection: 'row',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -348,7 +321,6 @@ const Sells: React.FC = () => {
                         position: 'absolute',
                         top: 60,
                         width: '100%',
-                        // backgroundColor: 'red',
                         flexDirection: 'row',
                         alignItems: 'stretch',
                         justifyContent: 'space-around',
