@@ -13,14 +13,16 @@ export const Container = styled.View`
   align-items: center;
   justify-content: center;
   padding: 0px 0px;
-  background: #ffd0f8;
+  background: #9d49d3;
 `
 export const Header = styled.View`
   position: absolute;
-  top: 16px;
+  top: 4px;
   align-items: center;
   justify-content: center;
   width: 100%;
+  background: #ffd0f8;
+  padding: 10px;
 `
 export const ClientHeader = styled.View`
   position: relative;
@@ -70,28 +72,12 @@ export const ViewTest = styled.View`
   width: 100%;
   border-color: #9d49d3;
   border-top-width: 1px;
+  background: #ffd0f8;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
 `
 export const ProductList = styled(FlatList as new () => FlatList<CartState>)``
 
-export const SignOutButton = styled.TouchableOpacity`
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: #ffd0f8;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  border-top-width: 1px;
-  border-color: #9d49d3;
-  padding: 8px 0 ${8 + getBottomSpace()}px;
-`
-export const SignOutButtonText = styled.Text`
-  color: #730fc3;
-  font-size: 16px;
-  font-family: 'RobotoSlab-Medium';
-  margin-left: 16px;
-`
 export const Title = styled.Text`
   font-size: 14px;
   color: #312e38;

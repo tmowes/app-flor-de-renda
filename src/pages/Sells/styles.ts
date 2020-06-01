@@ -57,8 +57,6 @@ export const FlatListHeader = styled.View`
   width: 100%;
   justify-content: space-around;
   align-items: center;
-  /* border-bottom-width: 1px; */
-  /* border-color: red; */
 `
 export const FlatListHeaderText = styled.Text`
   font-size: 24px;
@@ -72,7 +70,6 @@ export const ViewTest = styled.View`
   margin: 0 0 178px;
   width: 110%;
   background: #ffd0f8;
-  /* border-radius: 16px; */
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
 `

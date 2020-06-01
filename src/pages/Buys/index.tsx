@@ -32,9 +32,7 @@ import TinyInput from '../../components/TinyInput'
 
 import {
   Container,
-  SignOutButton,
   MenuButton,
-  SignOutButtonText,
   ClientHeader,
   FlatListHeader,
   FlatListHeaderText,
@@ -78,28 +76,6 @@ const Buys: React.FC = () => {
       console.log('popup state?', popup)
     }
   }
-
-  // useEffect(() => {
-  //   async function loadProducts(): Promise<void> {
-  //     // DONE LOAD PRODUCTS FROM ASYNC STORAGE
-  //     const storageProducts = await AsyncStorage.getItem(
-  //       '@AppFlorDeRenda:products',
-  //     )
-  //     if (storageProducts) {
-  //       setProducts([...JSON.parse(storageProducts)])
-  //     }
-  //   }
-  //   loadProducts()
-  // }, [])
-
-  // useEffect(() => {
-  //   async function loadProducts(): Promise<void> {
-  //     // DONE LOAD PRODUCTS FROM API
-  //     const response = await api.get('/products')
-  //     setProducts(response.data)
-  //   }
-  //   loadProducts()
-  // }, [])
 
   return (
     <>
