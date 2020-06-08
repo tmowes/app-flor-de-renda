@@ -3,6 +3,7 @@ interface ProductsList {
   quantity: number
   title: string
   price: number
+  isSelect?: boolean
 }
 
 export const data: ProductsList[] = [

@@ -24,6 +24,7 @@
     "axios": "^0.19.2",
     "intl": "^1.2.5",
     "json-server": "^0.16.1",
+    "logkitty": "0.7.1",
     "react": "16.11.0",
     "react-icons": "^3.10.0",
     "react-native": "0.62.2",
