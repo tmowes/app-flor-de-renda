@@ -76,23 +76,23 @@ const Accordion: React.FC = () => {
   //   })
   // }
 
-  function renderList(item: CartState) {
-    return (
-      <TouchableOpacity
-        style={[styles.list, data.item.selectedClass]}
-        onPress={() => {}}
-      >
-        <Image
-          source={{ uri: data.item.thumbnailUrl }}
-          style={{ width: 40, height: 40, margin: 6 }}
-        />
-        <Text style={styles.lightText}>
-          {' '}
-          {data.item.title.charAt(0).toUpperCase() + data.item.title.slice(1)}
-        </Text>
-      </TouchableOpacity>
-    )
-  }
+  // function renderList(item: any) {
+  //   return (
+  //     <TouchableOpacity
+  //       style={[styles.list, data.selectedClass]}
+  //       onPress={() => {}}
+  //     >
+  //       <Image
+  //         source={{ uri: data.thumbnailUrl }}
+  //         style={{ width: 40, height: 40, margin: 6 }}
+  //       />
+  //       <Text style={styles.lightText}>
+  //         {' '}
+  //         {data.title.charAt(0).toUpperCase() + data.title.slice(1)}
+  //       </Text>
+  //     </TouchableOpacity>
+  //   )
+  // }
 
   const itemNumber = data.filter(item => item.isSelect).length
   if (loading) {
@@ -106,11 +106,11 @@ const Accordion: React.FC = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>productsAvailable</Text>
-      <FlatList
+      {/* <FlatList
         data={data}
         renderItem={item => renderList(item.item)}
         keyExtractor={item => String(item.id)}
-      />
+      /> */}
 
       <View style={styles.numberBox}>
         <Text style={styles.number}>{itemNumber}</Text>

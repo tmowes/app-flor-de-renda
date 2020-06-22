@@ -1,7 +1,6 @@
-/* eslint-disable no-console */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-empty-function */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable no-unused-expressions */
 import React, { useCallback, useRef } from 'react'
 import {
   Image,
