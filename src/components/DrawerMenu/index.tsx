@@ -5,7 +5,17 @@ import {
   DrawerContentComponentProps,
 } from '@react-navigation/drawer'
 
-import { Container, Header, HeaderContent, MenuContent, MenuItem } from './styles'
+import {
+  Container,
+  Header,
+  HeaderContent,
+  MenuContent,
+  MenuItem,
+  MenuBackGroundLeft,
+  MenuBackGroundRight,
+  Footer,
+  FooterContent,
+} from './styles'
 
 interface DrawerProps {}
 
@@ -14,11 +24,18 @@ const Drawer = (props: DrawerContentComponentProps<DrawerContentOptions>) => {
   return (
     <Container>
       <Header>
+        <MenuBackGroundRight />
         <HeaderContent />
       </Header>
+
       <MenuContent>
+        <MenuBackGroundLeft />
         <MenuItem />
       </MenuContent>
+      <Footer>
+        <MenuBackGroundRight />
+        <FooterContent />
+      </Footer>
     </Container>
   )
 }
