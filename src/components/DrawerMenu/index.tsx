@@ -13,9 +13,31 @@ import {
   MenuItem,
   MenuBackGroundLeft,
   MenuBackGroundRight,
+  MenuBackGroundRight2,
   Footer,
   FooterContent,
 } from './styles'
+
+const items = [
+  {
+    icon: 'teste',
+    label: 'linha 1',
+    screen: 'Sell1',
+    color: 'black',
+  },
+  {
+    icon: 'teste',
+    label: 'linha 1',
+    screen: 'Sell2',
+    color: 'black',
+  },
+  {
+    icon: 'teste',
+    label: 'linha 1',
+    screen: 'Sell3',
+    color: 'black',
+  },
+]
 
 interface DrawerProps {}
 
@@ -30,7 +52,9 @@ const Drawer = (props: DrawerContentComponentProps<DrawerContentOptions>) => {
 
       <MenuContent>
         <MenuBackGroundLeft />
+        <MenuBackGroundRight2 />
         <MenuItem />
+        {}
       </MenuContent>
       <Footer>
         <MenuBackGroundRight />

@@ -4,7 +4,7 @@ export const Container = styled.View`
   flex: 1;
 `
 export const Header = styled.View`
-  flex: 0.2;
+  flex: 0.25;
 `
 
 export const HeaderContent = styled.View`
@@ -14,19 +14,24 @@ export const HeaderContent = styled.View`
   bottom: 0;
   right: 0;
   border-bottom-right-radius: 75;
-  background-color: orange;
+  background-color: #730fc3;
 `
 export const MenuContent = styled.View`
   flex: 0.8;
 `
 export const MenuBackGroundLeft = styled.View`
   flex: 1;
-  background-color: orange;
+  background-color: #730fc3;
 `
 
 export const MenuBackGroundRight = styled.View`
   flex: 1;
-  background-color: blue;
+  background-color: #ebcef4;
+`
+
+export const MenuBackGroundRight2 = styled.View`
+  flex: 1;
+  background-color: black;
 `
 
 export const MenuItem = styled.View`
@@ -35,12 +40,12 @@ export const MenuItem = styled.View`
   left: 0;
   bottom: 0;
   right: 0;
-  border-top-left-radius: 75;
+  border-top-left-radius: 40;
   border-bottom-right-radius: 75;
-  background-color: blue;
+  background-color: #ebcef4;
 `
 export const Footer = styled.View`
-  flex: 0.2;
+  flex: 0.1;
 `
 
 export const FooterContent = styled.View`
@@ -49,6 +54,6 @@ export const FooterContent = styled.View`
   left: 0;
   bottom: 0;
   right: 0;
-  border-bottom-right-radius: 75;
-  background-color: orange;
+  border-top-left-radius: 40;
+  background-color: black;
 `
