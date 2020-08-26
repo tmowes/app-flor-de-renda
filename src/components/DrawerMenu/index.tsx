@@ -17,6 +17,7 @@ import {
   Footer,
   FooterContent,
 } from './styles'
+import DrawerItem from './DrawerItem'
 
 const items = [
   {
@@ -39,7 +40,7 @@ const items = [
   },
 ]
 
-interface DrawerProps {}
+// interface DrawerProps {}
 
 const Drawer = (props: DrawerContentComponentProps<DrawerContentOptions>) => {
   console.log({ props })
@@ -54,7 +55,9 @@ const Drawer = (props: DrawerContentComponentProps<DrawerContentOptions>) => {
         <MenuBackGroundLeft />
         <MenuBackGroundRight2 />
         <MenuItem />
-        {}
+        {items.map(item => (
+          <DrawerItem key={item.screen} {...item} />
+        ))}
       </MenuContent>
       <Footer>
         <MenuBackGroundRight />

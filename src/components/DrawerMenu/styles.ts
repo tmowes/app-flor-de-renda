@@ -13,7 +13,7 @@ export const HeaderContent = styled.View`
   left: 0;
   bottom: 0;
   right: 0;
-  border-bottom-right-radius: 75;
+  border-bottom-right-radius: 60px;
   background-color: #730fc3;
 `
 export const MenuContent = styled.View`
@@ -40,8 +40,8 @@ export const MenuItem = styled.View`
   left: 0;
   bottom: 0;
   right: 0;
-  border-top-left-radius: 40;
-  border-bottom-right-radius: 75;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
   background-color: #ebcef4;
 `
 export const Footer = styled.View`
@@ -54,6 +54,6 @@ export const FooterContent = styled.View`
   left: 0;
   bottom: 0;
   right: 0;
-  border-top-left-radius: 40;
+  border-top-right-radius: 50px;
   background-color: black;
 `
