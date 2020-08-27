@@ -21,20 +21,20 @@ import DrawerItem from './DrawerItem'
 
 const items = [
   {
-    icon: 'teste',
+    icon: 'shopping-cart',
     label: 'linha 1',
     screen: 'Sell1',
     color: 'black',
   },
   {
-    icon: 'teste',
-    label: 'linha 1',
+    icon: 'bar-chart-2',
+    label: 'linha 2',
     screen: 'Sell2',
     color: 'black',
   },
   {
-    icon: 'teste',
-    label: 'linha 1',
+    icon: 'shopping-cart',
+    label: 'linha 3',
     screen: 'Sell3',
     color: 'black',
   },
@@ -54,10 +54,11 @@ const Drawer = (props: DrawerContentComponentProps<DrawerContentOptions>) => {
       <MenuContent>
         <MenuBackGroundLeft />
         <MenuBackGroundRight2 />
-        <MenuItem />
-        {items.map(item => (
-          <DrawerItem key={item.screen} {...item} />
-        ))}
+        <MenuItem>
+          {items.map(item => (
+            <DrawerItem key={item.screen} {...item} />
+          ))}
+        </MenuItem>
       </MenuContent>
       <Footer>
         <MenuBackGroundRight />
