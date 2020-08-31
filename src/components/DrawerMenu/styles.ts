@@ -1,4 +1,7 @@
 import styled from 'styled-components/native'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+
+import logoImg from '../../assets/logo.png'
 
 export const Container = styled.View`
   flex: 1;
@@ -57,3 +60,10 @@ export const FooterContent = styled.View`
   border-top-right-radius: 50px;
   background-color: black;
 `
+export const Avatar = styled(Icon).attrs({ name: 'face', size: 200 })`
+  color: white;
+  position: absolute;
+  top: -40px;
+  left: -60px;
+`
+export const LogoComponent = styled.Image.attrs({ source: logoImg })``

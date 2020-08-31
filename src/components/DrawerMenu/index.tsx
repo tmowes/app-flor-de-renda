@@ -1,9 +1,5 @@
 import React from 'react'
 import { View } from 'react-native'
-import {
-  DrawerContentOptions,
-  DrawerContentComponentProps,
-} from '@react-navigation/drawer'
 
 import {
   Container,
@@ -16,6 +12,7 @@ import {
   MenuBackGroundRight2,
   Footer,
   FooterContent,
+  Avatar,
 } from './styles'
 import DrawerItem from './DrawerItem'
 
@@ -42,13 +39,17 @@ const items = [
 
 // interface DrawerProps {}
 
-const Drawer = (props: DrawerContentComponentProps<DrawerContentOptions>) => {
-  console.log({ props })
+const DrawerMenu: React.FC = () => {
   return (
     <Container>
       <Header>
         <MenuBackGroundRight />
-        <HeaderContent />
+        <HeaderContent>
+          <View>
+            <Avatar />
+            <LogoComponent />
+          </View>
+        </HeaderContent>
       </Header>
 
       <MenuContent>
@@ -68,4 +69,4 @@ const Drawer = (props: DrawerContentComponentProps<DrawerContentOptions>) => {
   )
 }
 
-export default Drawer
+export default DrawerMenu

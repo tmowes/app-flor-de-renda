@@ -37,7 +37,7 @@ const App = createDrawerNavigator()
 
 const AppRoutes: React.FC = () => (
   <App.Navigator
-    drawerContent={DrawerMenu}
+    drawerContent={() => <DrawerMenu />}
     // drawerContent={drawerHeader}
     // drawerContent={() => <DrawerContent />}
     // screenOptions={({ route }) => ({
