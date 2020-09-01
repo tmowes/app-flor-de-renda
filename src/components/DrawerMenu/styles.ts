@@ -61,9 +61,15 @@ export const FooterContent = styled.View`
   background-color: black;
 `
 export const Avatar = styled(Icon).attrs({ name: 'face', size: 200 })`
-  color: white;
+  color: #cd4294;
   position: absolute;
   top: -40px;
   left: -60px;
 `
-export const LogoComponent = styled.Image.attrs({ source: logoImg })``
+export const LogoComponent = styled.Image.attrs({
+  source: logoImg,
+  resizeMode: 'contain',
+})`
+  width: 120px;
+  margin: -20px 0 0 130px;
+`

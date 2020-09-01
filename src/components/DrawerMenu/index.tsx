@@ -13,6 +13,7 @@ import {
   Footer,
   FooterContent,
   Avatar,
+  LogoComponent,
 } from './styles'
 import DrawerItem from './DrawerItem'
 
