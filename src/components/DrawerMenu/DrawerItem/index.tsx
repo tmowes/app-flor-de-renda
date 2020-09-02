@@ -2,12 +2,14 @@ import React from 'react'
 // import { Text } from 'react-native'
 import Icon from 'react-native-vector-icons/Feather'
 
+import { useNavigation } from '@react-navigation/native'
 import { Container, IconView, MenuText } from './styles'
 import { DrawerItemProps } from './types'
 
-const DrawerItem: React.FC<DrawerItemProps> = ({ icon, label }) => {
+const DrawerItem: React.FC<DrawerItemProps> = ({ icon, label, screen }) => {
+  const { navigate } = useNavigation()
   return (
-    <Container>
+    <Container onPress={() => navigate(screen)}>
       <IconView>
         <Icon name={icon} size={30} color="green" />
       </IconView>

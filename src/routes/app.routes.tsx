@@ -61,7 +61,7 @@ const AppRoutes: React.FC = () => (
     //     return <Icon name={iconName} size={24} color={color} />
     //   },
     // })}
-    // drawerContentOptions={{
+    // drawerContent
     //   activeTintColor: '#f4EDE8',
     //   activeBackgroundColor: '#730FC3',
     //   inactiveTintColor: '#730FC3',
@@ -70,41 +70,13 @@ const AppRoutes: React.FC = () => (
     //   backgroundColor: '#FFD0F8',
     // }}
   >
-    <App.Screen
-      name="Sells"
-      component={Sells}
-      options={{ drawerLabel: 'VENDAS/SAÍDAS' }}
-    />
-    <App.Screen
-      name="Buys"
-      component={Buys}
-      options={{ title: 'COMPRAS/ENTRADA' }}
-    />
-    <App.Screen
-      name="Graphic"
-      component={Dashboard}
-      options={{ title: 'GRAFICOS' }}
-    />
-    <App.Screen
-      name="Report"
-      component={Dashboard}
-      options={{ title: 'RELATÓRIOS' }}
-    />
-    <App.Screen
-      name="Query"
-      component={Dashboard}
-      options={{ title: 'CONSULTAS' }}
-    />
-    <App.Screen
-      name="Register"
-      component={Admin}
-      options={{ title: 'CADASTROS' }}
-    />
-    <App.Screen
-      name="SignIn"
-      component={SignIn}
-      options={{ drawerLabel: 'SAIR' }}
-    />
+    <App.Screen name="Sells" component={Sells} />
+    <App.Screen name="Buys" component={Buys} />
+    <App.Screen name="Graphic" component={Dashboard} />
+    <App.Screen name="Report" component={Dashboard} />
+    <App.Screen name="Query" component={Dashboard} />
+    <App.Screen name="Register" component={Admin} />
+    <App.Screen name="SignIn" component={SignIn} />
   </App.Navigator>
 )
 

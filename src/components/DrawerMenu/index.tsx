@@ -16,27 +16,7 @@ import {
   LogoComponent,
 } from './styles'
 import DrawerItem from './DrawerItem'
-
-const items = [
-  {
-    icon: 'shopping-cart',
-    label: 'linha 1',
-    screen: 'Sell1',
-    color: 'black',
-  },
-  {
-    icon: 'bar-chart-2',
-    label: 'linha 2',
-    screen: 'Sell2',
-    color: 'black',
-  },
-  {
-    icon: 'shopping-cart',
-    label: 'linha 3',
-    screen: 'Sell3',
-    color: 'black',
-  },
-]
+import { drawerData } from './drawerData'
 
 // interface DrawerProps {}
 
@@ -57,8 +37,8 @@ const DrawerMenu: React.FC = () => {
         <MenuBackGroundLeft />
         <MenuBackGroundRight2 />
         <MenuItem>
-          {items.map(item => (
-            <DrawerItem key={item.screen} {...item} />
+          {drawerData.map(data => (
+            <DrawerItem key={data.screen} {...data} />
           ))}
         </MenuItem>
       </MenuContent>
