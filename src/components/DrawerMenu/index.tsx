@@ -37,8 +37,8 @@ const DrawerMenu: React.FC = () => {
         <MenuBackGroundLeft />
         <MenuBackGroundRight2 />
         <MenuItem>
-          {drawerData.map(data => (
-            <DrawerItem key={data.screen} {...data} />
+          {drawerData.map(item => (
+            <DrawerItem key={item.label} {...item} />
           ))}
         </MenuItem>
       </MenuContent>

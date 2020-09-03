@@ -21,7 +21,7 @@ import {
 
 import Slider from '@react-native-community/slider'
 import { CheckBox } from 'react-native-elements'
-import AsyncStorage from '@react-native-community/async-storage'
+
 import { useNavigation, DrawerActions } from '@react-navigation/native'
 import { Form } from '@unform/mobile'
 import Icon from 'react-native-vector-icons/Feather'
@@ -69,7 +69,7 @@ interface CartState {
 
 const Sells: React.FC = () => {
   const [products, setProducts] = useState<CartState[]>([])
-  const navigation = useNavigation()
+  const { dispatch } = useNavigation()
   const [popup, setPopup] = useState<boolean>(false)
   const [qrcode, setQrcode] = useState<boolean>(false)
   const [paymentTypeState, setPaymentTypeState] = useState<number>(0)
@@ -118,9 +118,7 @@ const Sells: React.FC = () => {
                 justifyContent: 'center',
               }}
             >
-              <MenuButton
-                onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-              >
+              <MenuButton onPress={() => dispatch(DrawerActions.openDrawer())}>
                 <Icon name="menu" size={32} color="#9D49D3" />
               </MenuButton>
               <Image

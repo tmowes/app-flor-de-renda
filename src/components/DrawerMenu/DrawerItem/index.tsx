@@ -1,5 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react'
-// import { Text } from 'react-native'
 import Icon from 'react-native-vector-icons/Feather'
 
 import { useNavigation } from '@react-navigation/native'
