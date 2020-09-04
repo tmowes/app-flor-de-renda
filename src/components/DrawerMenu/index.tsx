@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View } from 'react-native'
 
 import {
@@ -12,13 +12,13 @@ import {
   MenuBackGroundRight2,
   Footer,
   FooterContent,
-  Avatar,
   LogoComponent,
 } from './styles'
 import DrawerItem from './DrawerItem'
 import { menuItems } from './data'
 
 const DrawerMenu: React.FC = () => {
+  // const [active, setActive] = useState()
   return (
     <Container>
       <Header>
@@ -33,8 +33,8 @@ const DrawerMenu: React.FC = () => {
         <MenuBackGroundLeft />
         <MenuBackGroundRight2 />
         <MenuItem>
-          {menuItems.map(item => (
-            <DrawerItem key={item.screen} {...item} />
+          {menuItems.map(drawerData => (
+            <DrawerItem key={drawerData.screen} {...{ drawerData }} />
           ))}
         </MenuItem>
       </MenuContent>

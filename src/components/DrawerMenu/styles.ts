@@ -17,14 +17,17 @@ export const HeaderContent = styled.View`
   bottom: 0;
   right: 0;
   border-bottom-right-radius: 60px;
-  background-color: #730fc3;
+  background-color: #ebcef4;
+
+  background-color: #730fc366;
 `
 export const MenuContent = styled.View`
   flex: 0.8;
 `
 export const MenuBackGroundLeft = styled.View`
   flex: 1;
-  background-color: #730fc3;
+  background-color: #ebcef4;
+  background-color: #730fc366;
 `
 
 export const MenuBackGroundRight = styled.View`
@@ -70,6 +73,6 @@ export const LogoComponent = styled.Image.attrs({
   source: logoImg,
   resizeMode: 'contain',
 })`
-  width: 120px;
-  margin: -20px 0 0 130px;
+  width: 220px;
+  margin: 8px 0 0 24px;
 `
