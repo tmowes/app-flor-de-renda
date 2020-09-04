@@ -61,7 +61,7 @@ export const FooterContent = styled.View`
   background-color: black;
 `
 export const Avatar = styled(Icon).attrs({ name: 'face', size: 200 })`
-  color: #cd4294;
+  color: white;
   position: absolute;
   top: -40px;
   left: -60px;

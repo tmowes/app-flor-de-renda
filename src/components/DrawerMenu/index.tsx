@@ -16,9 +16,7 @@ import {
   LogoComponent,
 } from './styles'
 import DrawerItem from './DrawerItem'
-import { drawerData } from './drawerData'
-
-// interface DrawerProps {}
+import { menuItems } from './data'
 
 const DrawerMenu: React.FC = () => {
   return (
@@ -27,18 +25,16 @@ const DrawerMenu: React.FC = () => {
         <MenuBackGroundRight />
         <HeaderContent>
           <View>
-            <Avatar />
             <LogoComponent />
           </View>
         </HeaderContent>
       </Header>
-
       <MenuContent>
         <MenuBackGroundLeft />
         <MenuBackGroundRight2 />
         <MenuItem>
-          {drawerData.map(item => (
-            <DrawerItem key={item.label} {...item} />
+          {menuItems.map(item => (
+            <DrawerItem key={item.screen} {...item} />
           ))}
         </MenuItem>
       </MenuContent>

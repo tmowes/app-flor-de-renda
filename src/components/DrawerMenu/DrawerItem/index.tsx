@@ -11,7 +11,7 @@ const DrawerItem: React.FC<DrawerItemProps> = ({ icon, label, screen }) => {
   return (
     <Container onPress={() => navigate(screen)}>
       <IconView>
-        <Icon name={icon} size={30} color="green" />
+        <Icon name={icon} size={30} color="#9D49D3" />
       </IconView>
       <MenuText>{label}</MenuText>
     </Container>
