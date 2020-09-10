@@ -1,40 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Icon from 'react-native-vector-icons/Feather'
 
 import { useNavigation } from '@react-navigation/native'
 import { Container, IconView, MenuText } from './styles'
-import { DrawerItemProps } from './types'
+import { DrawerDataProps } from './types'
 
-const DrawerItem: React.FC<DrawerItemProps> = ({ drawerData }) => {
-  const { navigate } = useNavigation()
-
-  const handleDrawernavigation = (activeScreen: string) => {
-    if (activeScreen === drawerData.screen) {
-      console.log('activeScreen ======', activeScreen)
-      drawerData.selected = !drawerData.selected
-      navigate(activeScreen)
-    }
-  }
+const DrawerItem: React.FC<DrawerDataProps> = ({
+  icon,
+  screen,
+  selected,
+  label,
+  onPress,
+}) => {
   return (
     <Container
-      onPress={() => handleDrawernavigation(drawerData.screen)}
+      onPress={onPress}
       style={{
-        backgroundColor: drawerData.selected ? '#9d49d3' : 'transparent',
+        backgroundColor: selected ? '#9d49d3' : 'transparent',
       }}
     >
       <IconView>
-        <Icon
-          name={drawerData.icon}
-          size={30}
-          color={drawerData.selected ? 'white' : '#9d49d3'}
-        />
+        <Icon name={icon} size={30} color={selected ? 'white' : '#9d49d3'} />
       </IconView>
       <MenuText
         style={{
-          color: drawerData.selected ? 'white' : '#9d49d3',
+          color: selected ? 'white' : '#9d49d3',
         }}
       >
-        {drawerData.label}
+        {label}
       </MenuText>
     </Container>
   )
