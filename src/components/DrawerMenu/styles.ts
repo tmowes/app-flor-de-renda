@@ -2,6 +2,7 @@ import styled from 'styled-components/native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import logoImg from '../../assets/logo.png'
+import logoPik from '../../assets/LOGO1.png'
 
 export const Container = styled.View`
   flex: 1;
@@ -17,17 +18,14 @@ export const HeaderContent = styled.View`
   bottom: 0;
   right: 0;
   border-bottom-right-radius: 60px;
-  background-color: #ebcef4;
-
-  background-color: #730fc366;
+  background-color: #bb82e0;
 `
 export const MenuContent = styled.View`
   flex: 0.8;
 `
 export const MenuBackGroundLeft = styled.View`
   flex: 1;
-  background-color: #ebcef4;
-  background-color: #730fc366;
+  background-color: #bb82e0;
 `
 
 export const MenuBackGroundRight = styled.View`
@@ -75,4 +73,15 @@ export const LogoComponent = styled.Image.attrs({
 })`
   width: 220px;
   margin: 8px 0 0 24px;
+`
+
+export const LogoPiktewComponent = styled.Image.attrs({
+  source: logoPik,
+  resizeMode: 'contain',
+})`
+  flex: 1;
+  width: 70px;
+  /* height: 50px; */
+  margin: 0 auto;
+  background-color: red;
 `

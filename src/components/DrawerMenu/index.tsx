@@ -15,6 +15,7 @@ import {
   Footer,
   FooterContent,
   LogoComponent,
+  LogoPiktewComponent,
 } from './styles'
 import DrawerItem from './DrawerItem'
 import { menuItems } from './data'
@@ -60,7 +61,9 @@ const DrawerMenu: React.FC = () => {
       </MenuContent>
       <Footer>
         <MenuBackGroundRight />
-        <FooterContent />
+        <FooterContent>
+          <LogoPiktewComponent />
+        </FooterContent>
       </Footer>
     </Container>
   )
