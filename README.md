@@ -7,15 +7,17 @@ APLICAÇÃO DE USO MOBILE OFFLINE PARA GESTÃO DE VENDAS
 </h4>
 
 <h1 align="center">
-<img src="screenshots/login.png" width="24%" >
-<img src="screenshots/drawer-menu.png" width="24%" >
-<img src="screenshots/sales.png" width="24%" >
-<img src="screenshots/close-sales.png" width="24%" >
+<img src="screenshots/login.png" width="32%" >
+<img src="screenshots/drawer-menu.png" width="32%" >
+<img src="screenshots/drawer-menu-update.png" width="32%" >
+<img src="screenshots/sales.png" width="32%" >
+<img src="screenshots/close-sales.png" width="32%" >
 </h1>
 
 Work In Progress
 
-___
+---
+
 <h5 align="right">
 Viewer discretion is advised
 </h5>
