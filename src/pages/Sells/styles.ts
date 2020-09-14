@@ -64,7 +64,7 @@ export const FlatListHeaderText = styled.Text`
   font-family: 'RobotoSlab-Medium';
   margin: 8px 0;
 `
-export const ViewTest = styled.View`
+export const BuysScrollView = styled.ScrollView`
   flex: 1;
   top: 186px;
   margin: 0 0 178px;
@@ -73,7 +73,6 @@ export const ViewTest = styled.View`
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
 `
-export const ProductList = styled(FlatList as new () => FlatList<CartState>)``
 
 export const SignOutButton = styled.TouchableOpacity`
   position: absolute;
