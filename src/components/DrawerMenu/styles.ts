@@ -80,8 +80,8 @@ export const LogoPiktewComponent = styled.Image.attrs({
   resizeMode: 'contain',
 })`
   flex: 1;
-  width: 70px;
+  width: 100px;
   /* height: 50px; */
   margin: 0 auto;
-  background-color: red;
+  /* background-color: red; */
 `

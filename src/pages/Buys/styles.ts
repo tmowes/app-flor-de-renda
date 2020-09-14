@@ -76,25 +76,11 @@ export const ViewTest = styled.View`
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
 `
-export const ProductList = styled(FlatList as new () => FlatList<CartState>)``
-
 export const Title = styled.Text`
   font-size: 14px;
   color: #312e38;
   font-family: 'RobotoSlab-Medium';
   /* margin: 0 0 8px; */
-`
-export const ProductTitle = styled.Text`
-  font-size: 16px;
-  color: #312e38;
-  font-family: 'RobotoSlab-Medium';
-  margin: 0 0 8px;
-`
-export const Product = styled.View`
-  padding: 2px 32px;
-  border-bottom-width: 1px;
-  border-color: #9d49d3;
-  flex-direction: row;
 `
 export const OrdersTitle = styled.Text`
   font-size: 20px;

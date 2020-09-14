@@ -1,10 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable no-shadow */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-console */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-/* eslint-disable @typescript-eslint/no-empty-function */
 import React, { useState, useEffect } from 'react'
 import {
   Image,
@@ -24,6 +17,7 @@ import { useNavigation, DrawerActions } from '@react-navigation/native'
 import { Form } from '@unform/mobile'
 import Icon from 'react-native-vector-icons/Feather'
 
+import ProductList from '../../components/ProductList'
 import formatValue from '../../utils/formatValue'
 import logoImg from '../../assets/logo.png'
 import SmallInput from '../../components/SmallInput'
@@ -34,22 +28,10 @@ import {
   Container,
   MenuButton,
   ClientHeader,
-  FlatListHeader,
-  FlatListHeaderText,
   Header,
-  CartHeader,
-  OrderQuantity,
-  OrderValue,
   Title,
-  OrdersTitle,
-  ProductList,
-  ProductTitle,
-  Product,
-  Footer,
   DetailsPopUp,
   ViewTest,
-  InTest,
-  InCash,
   InTerm,
 } from './styles'
 import { data } from '../../temp/products'
@@ -110,28 +92,9 @@ const Buys: React.FC = () => {
           </ClientHeader>
         </Header>
         <ViewTest>
-          <ProductList<any>
-            data={data}
-            keyExtractor={(item: { id: string }) => item.id}
-            ListFooterComponent={<View />}
-            ListFooterComponentStyle={{
-              backgroundColor: '#730FC3',
-              height: 4,
-            }}
-            renderItem={({ item }: { item: CartState }) => (
-              <Product
-                style={{
-                  flex: 1,
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                }}
-              >
-                <Title>{item.quantity}</Title>
-                <ProductTitle>{item.title}</ProductTitle>
-                <Title>{formatValue(item.price)}</Title>
-              </Product>
-            )}
-          />
+          {data.map(({ id, price, title, quantity }) => (
+            <ProductList key={id} {...{ id, price, title, quantity }} />
+          ))}
         </ViewTest>
         {popup && (
           <TouchableOpacity
