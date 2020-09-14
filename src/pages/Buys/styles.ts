@@ -1,12 +1,24 @@
 import styled from 'styled-components/native'
+import Icon from 'react-native-vector-icons/Feather'
 import { getBottomSpace } from 'react-native-iphone-x-helper'
-import { FlatList } from 'react-native'
 
-interface CartState {
-  id: string
-  title: string
-  price: number
-}
+export const MenuIcon = styled(Icon).attrs({
+  name: 'menu',
+  size: 32,
+  color: '#9D49D3',
+})``
+
+export const AddIcon = styled(Icon).attrs({
+  name: 'plus-circle',
+  size: 30,
+  color: '#9D49D3',
+})``
+
+export const RemoveIcon = styled(Icon).attrs({
+  name: 'minus',
+  size: 24,
+  color: '#9D49D3',
+})``
 
 export const Container = styled.View`
   flex: 1;
@@ -65,14 +77,14 @@ export const FlatListHeaderText = styled.Text`
   font-family: 'RobotoSlab-Medium';
   margin: 8px 0;
 `
-export const ViewTest = styled.View`
+export const BuysScrollView = styled.ScrollView`
   flex: 1;
   top: 80px;
-  margin: 0 0 100px;
   width: 100%;
+  background: #ffd0f8;
+  margin: 0 0 100px;
   border-color: #9d49d3;
   border-top-width: 1px;
-  background: #ffd0f8;
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
 `
@@ -80,7 +92,6 @@ export const Title = styled.Text`
   font-size: 14px;
   color: #312e38;
   font-family: 'RobotoSlab-Medium';
-  /* margin: 0 0 8px; */
 `
 export const OrdersTitle = styled.Text`
   font-size: 20px;

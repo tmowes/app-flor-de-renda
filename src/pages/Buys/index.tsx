@@ -1,28 +1,14 @@
-import React, { useState, useEffect } from 'react'
-import {
-  Image,
-  KeyboardAvoidingView,
-  ScrollView,
-  Platform,
-  Text,
-  View,
-  FlatList,
-  TouchableOpacity,
-} from 'react-native'
+import React, { useState } from 'react'
+import { Image, Text, View, TouchableOpacity } from 'react-native'
 
 import Slider from '@react-native-community/slider'
-import { CheckBox } from 'react-native-elements'
-import AsyncStorage from '@react-native-community/async-storage'
 import { useNavigation, DrawerActions } from '@react-navigation/native'
 import { Form } from '@unform/mobile'
-import Icon from 'react-native-vector-icons/Feather'
 
 import ProductList from '../../components/ProductList'
-import formatValue from '../../utils/formatValue'
 import logoImg from '../../assets/logo.png'
 import SmallInput from '../../components/SmallInput'
 import Button from '../../components/Button'
-import TinyInput from '../../components/TinyInput'
 
 import {
   Container,
@@ -31,22 +17,16 @@ import {
   Header,
   Title,
   DetailsPopUp,
-  ViewTest,
+  BuysScrollView,
   InTerm,
+  MenuIcon,
+  AddIcon,
+  RemoveIcon,
 } from './styles'
 import { data } from '../../temp/products'
-import api from '../../services/api'
-
-interface CartState {
-  id: string
-  title: string
-  price: number
-  quantity: number
-}
 
 const Buys: React.FC = () => {
-  const [products, setProducts] = useState<CartState[]>([])
-  const navigation = useNavigation()
+  const { dispatch } = useNavigation()
   const [popup, setPopup] = useState<boolean>(false)
 
   function handlerPopup() {
@@ -72,10 +52,8 @@ const Buys: React.FC = () => {
                 justifyContent: 'center',
               }}
             >
-              <MenuButton
-                onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-              >
-                <Icon name="menu" size={32} color="#9D49D3" />
+              <MenuButton onPress={() => dispatch(DrawerActions.openDrawer())}>
+                <MenuIcon />
               </MenuButton>
               <Image
                 source={logoImg}
@@ -86,16 +64,16 @@ const Buys: React.FC = () => {
                 }}
               />
               <TouchableOpacity onPress={handlerPopup}>
-                <Icon name="plus-circle" size={30} color="#9D49D3" />
+                <AddIcon />
               </TouchableOpacity>
             </View>
           </ClientHeader>
         </Header>
-        <ViewTest>
+        <BuysScrollView>
           {data.map(({ id, price, title, quantity }) => (
             <ProductList key={id} {...{ id, price, title, quantity }} />
           ))}
-        </ViewTest>
+        </BuysScrollView>
         {popup && (
           <TouchableOpacity
             onPress={handlerPopup}
@@ -131,7 +109,7 @@ const Buys: React.FC = () => {
                     right: 16,
                   }}
                 >
-                  <Icon name="minus" size={24} color="#9D49D3" />
+                  <RemoveIcon />
                 </TouchableOpacity>
               </View>
               <View
@@ -145,7 +123,7 @@ const Buys: React.FC = () => {
                 }}
               />
               <InTerm>
-                <Form onSubmit={() => {}}>
+                <Form onSubmit={() => true}>
                   <Title>2 parcelas de R$ 500,00</Title>
                   <Slider
                     style={{ width: '100%', height: 40 }}
@@ -182,7 +160,7 @@ const Buys: React.FC = () => {
                         name="name"
                         placeholder="2,5%"
                         returnKeyType="next"
-                        onSubmitEditing={() => {}}
+                        onSubmitEditing={() => true}
                       />
                     </View>
                     <View
@@ -198,7 +176,7 @@ const Buys: React.FC = () => {
                         name="name"
                         placeholder="10/07/2020"
                         returnKeyType="next"
-                        onSubmitEditing={() => {}}
+                        onSubmitEditing={() => true}
                       />
                     </View>
                     <View
@@ -214,7 +192,7 @@ const Buys: React.FC = () => {
                         name="name"
                         placeholder="R$ 500,00"
                         returnKeyType="next"
-                        onSubmitEditing={() => {}}
+                        onSubmitEditing={() => true}
                       />
                     </View>
                   </View>
@@ -224,7 +202,7 @@ const Buys: React.FC = () => {
                 style={{ marginTop: 72 }}
                 icon="plus-circle"
                 iconColor="#FBFF38"
-                onPress={() => {}}
+                onPress={() => true}
               >
                 Adicionar Itens
               </Button>

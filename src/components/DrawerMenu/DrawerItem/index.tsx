@@ -1,13 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Icon from 'react-native-vector-icons/Feather'
 
-import { useNavigation } from '@react-navigation/native'
 import { Container, IconView, MenuText } from './styles'
 import { DrawerDataProps } from './types'
 
 const DrawerItem: React.FC<DrawerDataProps> = ({
   icon,
-  screen,
   selected,
   label,
   onPress,
