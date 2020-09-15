@@ -53,9 +53,7 @@ const Sells: React.FC = () => {
   const [popup, setPopup] = useState<boolean>(false)
   const [qrcode, setQrcode] = useState<boolean>(false)
   const [sheetData, setSheetData] = useState<SellsSheetProps[]>([])
-
   const [paymentTypeState, setPaymentTypeState] = useState<number>(0)
-
   const [termQuantity, setTermQuantity] = useState<number>(2)
 
   useEffect(() => {
