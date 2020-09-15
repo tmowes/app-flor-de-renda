@@ -57,7 +57,7 @@ const Buys: React.FC = () => {
       setSheetData(result)
     }
     loadData()
-  }, [sheetData])
+  }, [])
 
   // const buysPrices = sheetData.map(buy => buy.price)
   // const totalBuys = buysPrices.reduce(
