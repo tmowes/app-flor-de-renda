@@ -5,20 +5,20 @@ import SignIn from '../pages/SignIn'
 import Dashboard from '../pages/Dashboard'
 // import SignUp from '../pages/SignUp'
 
-const Auth = createStackNavigator()
+const { Navigator, Screen } = createStackNavigator()
 
 const AuthRoutes: React.FC = () => (
-  <Auth.Navigator
+  <Navigator
     screenOptions={{
       headerShown: false,
       cardStyle: { backgroundColor: '#FFD0F8' },
     }}
   >
-    <Auth.Screen name="SignIn" component={SignIn} />
-    <Auth.Screen name="Dashboard" component={Dashboard} />
-    {/* <Auth.Screen name="Dashboard" component={Dashboard} /> */}
-    {/* <Auth.Screen name="SignUp" component={SignUp} /> */}
-  </Auth.Navigator>
+    <Screen name="SignIn" component={SignIn} />
+    <Screen name="Dashboard" component={Dashboard} />
+    {/* <Screen name="Dashboard" component={Dashboard} /> */}
+    {/* <Screen name="SignUp" component={SignUp} /> */}
+  </Navigator>
 )
 
 export default AuthRoutes

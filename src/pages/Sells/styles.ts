@@ -1,12 +1,5 @@
 import styled from 'styled-components/native'
 import { getBottomSpace } from 'react-native-iphone-x-helper'
-import { FlatList } from 'react-native'
-
-interface CartState {
-  id: string
-  title: string
-  price: number
-}
 
 export const Container = styled.View`
   flex: 1;

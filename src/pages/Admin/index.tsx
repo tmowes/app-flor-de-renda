@@ -1,13 +1,8 @@
-/* eslint-disable no-unused-expressions */
-/* eslint-disable @typescript-eslint/no-empty-function */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React, { useCallback, useRef } from 'react'
 import {
   Image,
   KeyboardAvoidingView,
   ScrollView,
-  View,
   TextInput,
   Platform,
   Alert,
@@ -23,7 +18,7 @@ import { useAuth } from '../../hooks/auth'
 
 import logoImg from '../../assets/logo.png'
 
-import { Container, Title, SignOutButton, SignOutButtonText } from './styles'
+import { Container, SignOutButton, SignOutButtonText } from './styles'
 import Input from '../../components/Input'
 import Button from '../../components/Button'
 
@@ -33,7 +28,7 @@ interface SignInFormData {
 }
 
 const Admin: React.FC = () => {
-  const { signIn, signOut } = useAuth()
+  const { signIn } = useAuth()
   const { navigate } = useNavigation()
 
   const formRef = useRef<FormHandles>(null)

@@ -1,14 +1,22 @@
-import React, { useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { Image, Text, View, TouchableOpacity } from 'react-native'
 
 import Slider from '@react-native-community/slider'
 import { useNavigation, DrawerActions } from '@react-navigation/native'
 import { Form } from '@unform/mobile'
+import axios from 'axios'
+
+import {
+  ENV_SPREADSHEET_URL,
+  ENV_GOOGLE_KEY,
+  ENV_SPREADSHEET_ID,
+} from '../../secrets/env.json'
 
 import ProductList from '../../components/ProductList'
 import logoImg from '../../assets/logo.png'
 import SmallInput from '../../components/SmallInput'
 import Button from '../../components/Button'
+import formatValue from '../../utils/formatValue'
 
 import {
   Container,
@@ -23,13 +31,50 @@ import {
   AddIcon,
   RemoveIcon,
 } from './styles'
-import { data } from '../../temp/products'
+import { BuysSheetProps } from './types'
 
 const Buys: React.FC = () => {
   const { dispatch } = useNavigation()
   const [popup, setPopup] = useState<boolean>(false)
+  const [sheetData, setSheetData] = useState<BuysSheetProps[]>([])
 
-  function handlerPopup() {
+  useEffect(() => {
+    async function loadData() {
+      const sheetName = 'BuysDataDev'
+      const sheetRange = 'A2:E24'
+      const { data } = await axios.get(
+        `${ENV_SPREADSHEET_URL}/${ENV_SPREADSHEET_ID}/values/${sheetName}!${sheetRange}?key=${ENV_GOOGLE_KEY}`,
+      )
+      const result = data.values.map((item: BuysSheetProps[]) => {
+        return {
+          id: `${item[0]}${item[1]}`,
+          title: item[1],
+          size: item[2],
+          price: Number(item[3]),
+          quantity: Number(item[4]),
+        }
+      })
+      setSheetData(result)
+    }
+    loadData()
+  }, [sheetData])
+
+  // const buysPrices = sheetData.map(buy => buy.price)
+  // const totalBuys = buysPrices.reduce(
+  //   (accumulator, current) => accumulator + current,
+  //   0,
+  // )
+  // const formattedTotalBuys = useMemo(() => {
+  //   return formatValue(totalBuys)
+  // }, [totalBuys])
+
+  // const sellsQuantity = sheetData.map(sell => sell.quantity)
+  // const totalQuantity = sellsQuantity.reduce(
+  //   (accumulator, current) => accumulator + current,
+  //   0,
+  // )
+
+  const handlerPopup = useCallback(() => {
     if (!popup) {
       setPopup(true)
       console.log('popup state?', popup)
@@ -37,7 +82,7 @@ const Buys: React.FC = () => {
       setPopup(false)
       console.log('popup state?', popup)
     }
-  }
+  }, [popup])
 
   return (
     <>
@@ -70,9 +115,10 @@ const Buys: React.FC = () => {
           </ClientHeader>
         </Header>
         <BuysScrollView>
-          {data.map(({ id, price, title, quantity }) => (
-            <ProductList key={id} {...{ id, price, title, quantity }} />
-          ))}
+          {sheetData &&
+            sheetData.map(({ id, price, title, quantity }) => (
+              <ProductList key={id} {...{ id, price, title, quantity }} />
+            ))}
         </BuysScrollView>
         {popup && (
           <TouchableOpacity
@@ -83,13 +129,11 @@ const Buys: React.FC = () => {
               right: 0,
               bottom: 0,
               top: 0,
-              // backgroundColor: 'red',
             }}
           >
             <DetailsPopUp>
               <View
                 style={{
-                  // flex: 1,
                   flexDirection: 'row',
                   alignItems: 'center',
                   justifyContent: 'center',

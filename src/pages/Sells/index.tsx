@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import {
   Image,
   View,
@@ -8,10 +8,17 @@ import {
 
 import Slider from '@react-native-community/slider'
 import { CheckBox } from 'react-native-elements'
+import axios from 'axios'
 
 import { useNavigation, DrawerActions } from '@react-navigation/native'
 import { Form } from '@unform/mobile'
 import Icon from 'react-native-vector-icons/Feather'
+
+import {
+  ENV_SPREADSHEET_URL,
+  ENV_GOOGLE_KEY,
+  ENV_SPREADSHEET_ID,
+} from '../../secrets/env.json'
 
 import ProductList from '../../components/ProductList'
 import logoImg from '../../assets/logo.png'
@@ -38,28 +45,68 @@ import {
   BuysScrollView,
   MenuButton,
 } from './styles'
-import { data } from '../../temp/products'
+import { SellsSheetProps } from './types'
+import formatValue from '../../utils/formatValue'
 
 const Sells: React.FC = () => {
   const { dispatch } = useNavigation()
   const [popup, setPopup] = useState<boolean>(false)
   const [qrcode, setQrcode] = useState<boolean>(false)
+  const [sheetData, setSheetData] = useState<SellsSheetProps[]>([])
+
   const [paymentTypeState, setPaymentTypeState] = useState<number>(0)
 
   const [termQuantity, setTermQuantity] = useState<number>(2)
 
-  function handleTermQuantity(value: number) {
-    setTermQuantity(value)
-  }
+  useEffect(() => {
+    async function loadData() {
+      const sheetName = 'SellsDataDev'
+      const sheetRange = 'A2:E24'
+      const { data } = await axios.get(
+        `${ENV_SPREADSHEET_URL}/${ENV_SPREADSHEET_ID}/values/${sheetName}!${sheetRange}?key=${ENV_GOOGLE_KEY}`,
+      )
+      const result = data.values.map((item: SellsSheetProps[]) => {
+        return {
+          id: `${item[0]}${item[1]}`,
+          title: item[1],
+          size: item[2],
+          price: Number(item[3]),
+          quantity: Number(item[4]),
+        }
+      })
+      setSheetData(result)
+    }
+    loadData()
+  }, [sheetData])
 
-  function handlePopup() {
+  const sellsPrices = sheetData.map(sell => sell.price)
+  const totalSells = sellsPrices.reduce(
+    (accumulator, current) => accumulator + current,
+    0,
+  )
+  const formattedTotalSells = useMemo(() => {
+    return formatValue(totalSells)
+  }, [totalSells])
+
+  const sellsQuantity = sheetData.map(sell => sell.quantity)
+  const totalQuantity = sellsQuantity.reduce(
+    (accumulator, current) => accumulator + current,
+    0,
+  )
+
+  const handleTermQuantity = useCallback((value: number) => {
+    setTermQuantity(value)
+  }, [])
+
+  const handlePopup = useCallback(() => {
     if (!popup) {
       setPopup(true)
     } else {
       setPopup(false)
     }
-  }
-  function handlePaymentState(checkBoxId: number) {
+  }, [popup])
+
+  const handlePaymentState = useCallback((checkBoxId: number) => {
     if (checkBoxId === 0) {
       setPaymentTypeState(0)
     } else if (checkBoxId === 1) {
@@ -67,15 +114,15 @@ const Sells: React.FC = () => {
     } else if (checkBoxId === 2) {
       setPaymentTypeState(2)
     }
-  }
+  }, [])
 
-  function handlerQrcode() {
+  const handlerQrcode = useCallback(() => {
     if (!qrcode) {
       setQrcode(true)
     } else {
       setQrcode(false)
     }
-  }
+  }, [qrcode])
 
   return (
     <>
@@ -117,11 +164,11 @@ const Sells: React.FC = () => {
           <CartHeader>
             <OrderQuantity>
               <OrdersTitle>Quantidade</OrdersTitle>
-              <OrdersTitle>20</OrdersTitle>
+              <OrdersTitle>{totalQuantity}</OrdersTitle>
             </OrderQuantity>
             <OrderValue>
               <OrdersTitle>Total</OrdersTitle>
-              <OrdersTitle>R$ 1.000,00</OrdersTitle>
+              <OrdersTitle>{formattedTotalSells}</OrdersTitle>
             </OrderValue>
           </CartHeader>
           <FlatListHeader>
@@ -135,9 +182,10 @@ const Sells: React.FC = () => {
           </FlatListHeader>
         </Header>
         <BuysScrollView>
-          {data.map(({ id, price, title, quantity }) => (
-            <ProductList key={id} {...{ id, price, title, quantity }} />
-          ))}
+          {sheetData &&
+            sheetData.map(({ id, price, title, quantity }) => (
+              <ProductList key={id} {...{ id, price, title, quantity }} />
+            ))}
         </BuysScrollView>
         {popup && (
           <>
