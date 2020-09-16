@@ -57,7 +57,7 @@ const Sells: React.FC = () => {
   const [termQuantity, setTermQuantity] = useState<number>(2)
 
   useEffect(() => {
-    async function loadData() {
+    async function loadData(): Promise<void> {
       const sheetName = 'SellsDataDev'
       const sheetRange = 'A2:E24'
       const { data } = await axios.get(

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { Image, Text, View, TouchableOpacity } from 'react-native'
 
 import Slider from '@react-native-community/slider'
@@ -16,7 +16,6 @@ import ProductList from '../../components/ProductList'
 import logoImg from '../../assets/logo.png'
 import SmallInput from '../../components/SmallInput'
 import Button from '../../components/Button'
-import formatValue from '../../utils/formatValue'
 
 import {
   Container,
@@ -39,7 +38,7 @@ const Buys: React.FC = () => {
   const [sheetData, setSheetData] = useState<BuysSheetProps[]>([])
 
   useEffect(() => {
-    async function loadData() {
+    async function loadData(): Promise<void> {
       const sheetName = 'BuysDataDev'
       const sheetRange = 'A2:E24'
       const { data } = await axios.get(
@@ -58,21 +57,6 @@ const Buys: React.FC = () => {
     }
     loadData()
   }, [])
-
-  // const buysPrices = sheetData.map(buy => buy.price)
-  // const totalBuys = buysPrices.reduce(
-  //   (accumulator, current) => accumulator + current,
-  //   0,
-  // )
-  // const formattedTotalBuys = useMemo(() => {
-  //   return formatValue(totalBuys)
-  // }, [totalBuys])
-
-  // const sellsQuantity = sheetData.map(sell => sell.quantity)
-  // const totalQuantity = sellsQuantity.reduce(
-  //   (accumulator, current) => accumulator + current,
-  //   0,
-  // )
 
   const handlerPopup = useCallback(() => {
     if (!popup) {
