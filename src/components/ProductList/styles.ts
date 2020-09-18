@@ -1,6 +1,6 @@
 import styled from 'styled-components/native'
 
-export const Product = styled.View`
+export const ProductRow = styled.View`
   flex: 1;
   padding: 0 32px;
   border-bottom-width: 1px;
@@ -8,6 +8,15 @@ export const Product = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+`
+export const Product = styled.View`
+  /* flex: 1;
+  padding: 0 32px;
+  border-bottom-width: 1px;
+  border-color: #9d49d3;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between; */
 `
 export const Title = styled.Text`
   font-size: 14px;

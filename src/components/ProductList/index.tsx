@@ -1,7 +1,8 @@
 import React, { useMemo } from 'react'
 import formatValue from '../../utils/formatValue'
+import ExpendedItem from './ExpendedItem'
 
-import { Product, ProductTitle, Title } from './styles'
+import { Product, ProductRow, ProductTitle, Title } from './styles'
 
 import { ProductListProps } from './types'
 
@@ -16,9 +17,12 @@ const ProductList: React.FC<ProductListProps> = ({
 
   return (
     <Product>
-      <Title>{quantity}</Title>
-      <ProductTitle>{title}</ProductTitle>
-      <Title>{formattedPrice}</Title>
+      <ProductRow>
+        <Title>{quantity}</Title>
+        <ProductTitle>{title}</ProductTitle>
+        <Title>{formattedPrice}</Title>
+      </ProductRow>
+      <ExpendedItem />
     </Product>
   )
 }

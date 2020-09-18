@@ -70,6 +70,7 @@ const Sells: React.FC = () => {
           size: item[2],
           price: Number(item[3]),
           quantity: Number(item[4]),
+          totalPrice: Number(item[3]) * Number(item[4]),
         }
       })
       setSheetData(result)
@@ -77,7 +78,7 @@ const Sells: React.FC = () => {
     loadData()
   }, [])
 
-  const sellsPrices = sheetData.map(sell => sell.price)
+  const sellsPrices = sheetData.map(sell => sell.totalPrice)
   const totalSells = sellsPrices.reduce(
     (accumulator, current) => accumulator + current,
     0,

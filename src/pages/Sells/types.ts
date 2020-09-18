@@ -3,6 +3,7 @@ export interface SellsSheetProps {
   title: string
   price: number
   quantity: number
+  totalPrice: number
 }
 
 export interface ProductsSheetProps {
