@@ -55,6 +55,7 @@ const Sells: React.FC = () => {
   const [sheetData, setSheetData] = useState<SellsSheetProps[]>([])
   const [paymentTypeState, setPaymentTypeState] = useState<number>(0)
   const [termQuantity, setTermQuantity] = useState<number>(2)
+  const [openedItems, setOpenedItems] = useState<string[]>([])
 
   useEffect(() => {
     async function loadData(): Promise<void> {
@@ -123,6 +124,19 @@ const Sells: React.FC = () => {
     }
   }, [qrcode])
 
+  const handleExpendedToggle = useCallback(
+    (id: string) => {
+      const alreadyOpen = openedItems.includes(id)
+      if (alreadyOpen) {
+        const filteredItems = openedItems.filter(item => item !== id)
+        setOpenedItems(filteredItems)
+      } else {
+        setOpenedItems([...openedItems, id])
+      }
+    },
+    [openedItems],
+  )
+
   return (
     <>
       <Container>
@@ -182,8 +196,13 @@ const Sells: React.FC = () => {
         </Header>
         <BuysScrollView>
           {sheetData &&
-            sheetData.map(({ id, price, title, quantity }) => (
-              <ProductList key={id} {...{ id, price, title, quantity }} />
+            sheetData.map(({ id, price, title, quantity, totalPrice }) => (
+              <ProductList
+                key={id}
+                expendedToggle={itemId => handleExpendedToggle(itemId)}
+                isOpen={!!openedItems.includes(id)}
+                {...{ id, price, title, quantity, totalPrice }}
+              />
             ))}
         </BuysScrollView>
         {popup && (

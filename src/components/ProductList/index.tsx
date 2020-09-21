@@ -10,19 +10,20 @@ const ProductList: React.FC<ProductListProps> = ({
   price,
   title,
   quantity,
+  totalPrice,
 }) => {
-  const formattedPrice = useMemo(() => {
-    return formatValue(price)
-  }, [price])
+  const formattedTotalPrice = useMemo(() => {
+    return formatValue(totalPrice)
+  }, [totalPrice])
 
   return (
     <Product>
       <ProductRow>
         <Title>{quantity}</Title>
         <ProductTitle>{title}</ProductTitle>
-        <Title>{formattedPrice}</Title>
+        <Title>{formattedTotalPrice}</Title>
       </ProductRow>
-      <ExpendedItem />
+      <ExpendedItem {...{ price }} />
     </Product>
   )
 }

@@ -3,4 +3,7 @@ export interface ProductListProps {
   title: string
   price: number
   quantity: number
+  totalPrice: number
+  expendedToggle: (id: string) => void
+  isOpen: boolean
 }
