@@ -195,15 +195,14 @@ const Sells: React.FC = () => {
           </FlatListHeader>
         </Header>
         <BuysScrollView>
-          {sheetData &&
-            sheetData.map(({ id, price, title, quantity, totalPrice }) => (
-              <ProductList
-                key={id}
-                expendedToggle={itemId => handleExpendedToggle(itemId)}
-                isOpen={!!openedItems.includes(id)}
-                {...{ id, price, title, quantity, totalPrice }}
-              />
-            ))}
+          {sheetData.map(({ id, price, title, quantity, totalPrice }) => (
+            <ProductList
+              key={id}
+              expendedToggle={itemId => handleExpendedToggle(itemId)}
+              isOpen={!!openedItems.includes(id)}
+              {...{ id, price, title, quantity, totalPrice }}
+            />
+          ))}
         </BuysScrollView>
         {popup && (
           <>
