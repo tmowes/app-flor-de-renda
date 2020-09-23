@@ -14,7 +14,7 @@ const ProductList: React.FC<ProductListProps> = ({
   quantity,
   totalPrice,
   isOpen,
-  expendedToggle,
+  expandedToggle,
   productLine,
 }) => {
   const formattedTotalPrice = useMemo(() => {
@@ -23,7 +23,7 @@ const ProductList: React.FC<ProductListProps> = ({
 
   return (
     <>
-      <Product onPress={() => expendedToggle(id)}>
+      <Product onPress={() => expandedToggle(id)}>
         <ProductRow>
           <Title>{quantity}</Title>
           <ProductTitle>{title}</ProductTitle>

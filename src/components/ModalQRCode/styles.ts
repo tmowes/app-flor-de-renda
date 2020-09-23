@@ -34,6 +34,7 @@ export const PopUpHeader = styled.View`
 
 export const PopUpTitle = styled.Text`
   font-size: 25px;
+  text-transform: uppercase;
   margin-left: auto;
   padding-left: 16px;
 `

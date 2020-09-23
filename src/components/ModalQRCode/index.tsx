@@ -11,16 +11,19 @@ import {
 } from './styles'
 import { ModalQRCodeProps } from './types'
 
-const ModalQRCode: React.FC<ModalQRCodeProps> = ({ handlerQrcode }) => {
+const ModalQRCode: React.FC<ModalQRCodeProps> = ({
+  modalTitle,
+  handleQrcode,
+}) => {
   return (
     <>
-      <PopUpOffButton onPress={handlerQrcode}>
+      <PopUpOffButton onPress={handleQrcode}>
         <PopUpOff />
       </PopUpOffButton>
       <DetailsPopUpOn>
         <PopUpHeader>
-          <PopUpTitle>QRCODE</PopUpTitle>
-          <MinimizeButton onPress={handlerQrcode}>
+          <PopUpTitle>{modalTitle}</PopUpTitle>
+          <MinimizeButton onPress={handleQrcode}>
             <MinimizeIcon />
           </MinimizeButton>
         </PopUpHeader>

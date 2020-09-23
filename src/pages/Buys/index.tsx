@@ -71,7 +71,7 @@ const Buys: React.FC = () => {
     }
   }, [popup])
 
-  const handleExpendedToggle = useCallback(
+  const handleExpandedToggle = useCallback(
     (id: string) => {
       const alreadyOpen = openedItems.includes(id)
       if (alreadyOpen) {
@@ -120,7 +120,7 @@ const Buys: React.FC = () => {
               ({ id, price, title, quantity, totalPrice, productLine }) => (
                 <ProductList
                   key={id}
-                  expendedToggle={itemId => handleExpendedToggle(itemId)}
+                  expandedToggle={itemId => handleExpandedToggle(itemId)}
                   isOpen={!!openedItems.includes(id)}
                   {...{ id, price, title, quantity, totalPrice, productLine }}
                 />

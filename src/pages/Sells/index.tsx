@@ -40,6 +40,7 @@ const Sells: React.FC = () => {
   const { dispatch } = useNavigation()
   const [popup, setPopup] = useState<boolean>(false)
   const [qrcode, setQrcode] = useState<boolean>(false)
+
   const [sheetData, setSheetData] = useState<SellsSheetProps[]>([])
   const [openedItems, setOpenedItems] = useState<string[]>([])
 
@@ -81,14 +82,6 @@ const Sells: React.FC = () => {
     0,
   )
 
-  const handlePopup = useCallback(() => {
-    if (!popup) {
-      setPopup(true)
-    } else {
-      setPopup(false)
-    }
-  }, [popup])
-
   const handleModal = useCallback(() => {
     if (!popup) {
       setPopup(true)
@@ -97,7 +90,7 @@ const Sells: React.FC = () => {
     }
   }, [popup])
 
-  const handlerQrcode = useCallback(() => {
+  const handleQrcode = useCallback(() => {
     if (!qrcode) {
       setQrcode(true)
     } else {
@@ -105,7 +98,7 @@ const Sells: React.FC = () => {
     }
   }, [qrcode])
 
-  const handleExpendedToggle = useCallback(
+  const handleExpandedToggle = useCallback(
     (id: string) => {
       const alreadyOpen = openedItems.includes(id)
       if (alreadyOpen) {
@@ -152,11 +145,11 @@ const Sells: React.FC = () => {
             </OrderValue>
           </CartHeader>
           <FlatListHeader>
-            <TouchableOpacity onPress={handlerQrcode}>
+            <TouchableOpacity onPress={handleQrcode}>
               <AddIcon />
             </TouchableOpacity>
             <FlatListHeaderText>PEDIDO</FlatListHeaderText>
-            <TouchableOpacity onPress={handlePopup}>
+            <TouchableOpacity onPress={handleModal}>
               <CartIcon />
             </TouchableOpacity>
           </FlatListHeader>
@@ -166,7 +159,7 @@ const Sells: React.FC = () => {
             ({ id, price, title, quantity, totalPrice, productLine }) => (
               <ProductList
                 key={id}
-                expendedToggle={itemId => handleExpendedToggle(itemId)}
+                expandedToggle={itemId => handleExpandedToggle(itemId)}
                 isOpen={!!openedItems.includes(id)}
                 {...{ id, price, title, quantity, totalPrice, productLine }}
               />
@@ -174,7 +167,7 @@ const Sells: React.FC = () => {
           )}
         </BuysScrollView>
         {popup && <Modal modalTitle="pagamento" {...{ handleModal }} />}
-        {qrcode && <ModalQRCode {...{ handlerQrcode }} />}
+        {qrcode && <ModalQRCode modalTitle="qrcode" {...{ handleQrcode }} />}
       </Container>
     </>
   )
