@@ -1,5 +1,7 @@
 import styled from 'styled-components/native'
 import { getBottomSpace } from 'react-native-iphone-x-helper'
+import Icon from 'react-native-vector-icons/Feather'
+import logoImg from '../../assets/logo.png'
 
 export const Container = styled.View`
   flex: 1;
@@ -14,7 +16,7 @@ export const Header = styled.View`
   align-items: center;
   justify-content: center;
   width: 110%;
-  background: #ffd0f8;
+  background: #ffdbfa;
   padding-top: 12px;
 `
 export const ClientHeader = styled.View`
@@ -24,7 +26,40 @@ export const ClientHeader = styled.View`
   flex-direction: row;
   padding: 0 16px;
 `
+export const ClientContent = styled.View`
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+`
 export const MenuButton = styled.TouchableOpacity``
+
+export const MenuIcon = styled(Icon).attrs({
+  name: 'menu',
+  size: 32,
+})`
+  color: #9d49d3;
+`
+export const AddIcon = styled(Icon).attrs({
+  name: 'plus-circle',
+  size: 30,
+})`
+  color: #9d49d3;
+`
+export const CartIcon = styled(Icon).attrs({
+  name: 'shopping-cart',
+  size: 30,
+})`
+  color: #9d49d3;
+`
+
+export const LogoImage = styled.Image.attrs({
+  source: logoImg,
+  resizeMode: 'center',
+})`
+  flex: 1;
+  height: 56px;
+`
+
 export const CartHeader = styled.View`
   position: relative;
   flex-direction: row;
@@ -62,7 +97,7 @@ export const BuysScrollView = styled.ScrollView`
   top: 186px;
   margin: 0 0 178px;
   width: 110%;
-  background: #ffd0f8;
+  background: #ffdbfa;
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
 `
@@ -72,7 +107,7 @@ export const SignOutButton = styled.TouchableOpacity`
   left: 0;
   right: 0;
   bottom: 0;
-  background: #ffd0f8;
+  background: #ffdbfa;
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -86,12 +121,7 @@ export const SignOutButtonText = styled.Text`
   font-family: 'RobotoSlab-Medium';
   margin-left: 16px;
 `
-export const Title = styled.Text`
-  font-size: 14px;
-  color: #312e38;
-  font-family: 'RobotoSlab-Medium';
-  /* margin: 0 0 8px; */
-`
+
 export const ProductTitle = styled.Text`
   font-size: 16px;
   color: #312e38;
@@ -110,49 +140,16 @@ export const OrdersTitle = styled.Text`
   font-family: 'RobotoSlab-Medium';
   margin: 0 0 8px;
 `
-export const DetailsPopUpOn = styled.View`
-  position: absolute;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  top: 0px;
-  background-color: #ffd0f8;
-  z-index: 20;
-  margin: 150px 8px 8px;
-  border-radius: 16px;
-  border-color: #9d49d3;
-  border-width: 2px;
-`
-export const DetailsPopUpOff = styled.View`
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  background-color: transparent;
-`
 export const Footer = styled.View`
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  background: #ffd0f8;
+  background: #ffdbfa;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   border-top-width: 1px;
   border-color: #9d49d3;
   padding: 0 16px ${40 + getBottomSpace()}px;
-`
-export const InCash = styled.View`
-  align-items: center;
-  justify-content: center;
-`
-export const InTerm = styled.View`
-  align-items: center;
-  justify-content: center;
-`
-export const InTest = styled.View`
-  align-items: center;
-  justify-content: center;
 `

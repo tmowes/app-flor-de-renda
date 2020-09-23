@@ -15,6 +15,7 @@ const ProductList: React.FC<ProductListProps> = ({
   totalPrice,
   isOpen,
   expendedToggle,
+  productLine,
 }) => {
   const formattedTotalPrice = useMemo(() => {
     return formatValue(totalPrice)
@@ -28,7 +29,7 @@ const ProductList: React.FC<ProductListProps> = ({
           <ProductTitle>{title}</ProductTitle>
           <Title>{formattedTotalPrice}</Title>
         </ProductRow>
-        <View>{isOpen && <ExpendedItem {...{ price }} />}</View>
+        <View>{isOpen && <ExpendedItem {...{ price, productLine }} />}</View>
       </Product>
     </>
   )

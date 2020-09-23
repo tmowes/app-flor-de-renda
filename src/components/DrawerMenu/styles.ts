@@ -30,7 +30,7 @@ export const MenuBackGroundLeft = styled.View`
 
 export const MenuBackGroundRight = styled.View`
   flex: 1;
-  background-color: #ebcef4;
+  background-color: #ffdbfa;
 `
 
 export const MenuBackGroundRight2 = styled.View`
@@ -46,7 +46,7 @@ export const MenuItem = styled.View`
   right: 0;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
-  background-color: #ebcef4;
+  background-color: #ffdbfa;
 `
 export const Footer = styled.View`
   flex: 0.1;

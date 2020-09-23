@@ -3,4 +3,6 @@ export interface BuysSheetProps {
   title: string
   price: number
   quantity: number
+  totalPrice: number
+  productLine: string
 }

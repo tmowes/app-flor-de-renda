@@ -6,4 +6,5 @@ export interface ProductListProps {
   totalPrice: number
   expendedToggle: (id: string) => void
   isOpen: boolean
+  productLine: string
 }

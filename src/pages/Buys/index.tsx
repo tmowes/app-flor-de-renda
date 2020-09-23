@@ -36,11 +36,12 @@ const Buys: React.FC = () => {
   const { dispatch } = useNavigation()
   const [popup, setPopup] = useState<boolean>(false)
   const [sheetData, setSheetData] = useState<BuysSheetProps[]>([])
+  const [openedItems, setOpenedItems] = useState<string[]>([])
 
   useEffect(() => {
     async function loadData(): Promise<void> {
       const sheetName = 'BuysDataDev'
-      const sheetRange = 'A2:E24'
+      const sheetRange = 'A2:F24'
       const { data } = await axios.get(
         `${ENV_SPREADSHEET_URL}/${ENV_SPREADSHEET_ID}/values/${sheetName}!${sheetRange}?key=${ENV_GOOGLE_KEY}`,
       )
@@ -51,6 +52,8 @@ const Buys: React.FC = () => {
           size: item[2],
           price: Number(item[3]),
           quantity: Number(item[4]),
+          totalPrice: Number(item[3]) * Number(item[4]),
+          productLine: item[5],
         }
       })
       setSheetData(result)
@@ -67,6 +70,19 @@ const Buys: React.FC = () => {
       console.log('popup state?', popup)
     }
   }, [popup])
+
+  const handleExpendedToggle = useCallback(
+    (id: string) => {
+      const alreadyOpen = openedItems.includes(id)
+      if (alreadyOpen) {
+        const filteredItems = openedItems.filter(item => item !== id)
+        setOpenedItems(filteredItems)
+      } else {
+        setOpenedItems([...openedItems, id])
+      }
+    },
+    [openedItems],
+  )
 
   return (
     <>
@@ -100,9 +116,16 @@ const Buys: React.FC = () => {
         </Header>
         <BuysScrollView>
           {sheetData &&
-            sheetData.map(({ id, price, title, quantity }) => (
-              <ProductList key={id} {...{ id, price, title, quantity }} />
-            ))}
+            sheetData.map(
+              ({ id, price, title, quantity, totalPrice, productLine }) => (
+                <ProductList
+                  key={id}
+                  expendedToggle={itemId => handleExpendedToggle(itemId)}
+                  isOpen={!!openedItems.includes(id)}
+                  {...{ id, price, title, quantity, totalPrice, productLine }}
+                />
+              ),
+            )}
         </BuysScrollView>
         {popup && (
           <TouchableOpacity

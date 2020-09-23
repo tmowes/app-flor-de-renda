@@ -4,6 +4,7 @@ export interface SellsSheetProps {
   price: number
   quantity: number
   totalPrice: number
+  productLine: string
 }
 
 export interface ProductsSheetProps {
