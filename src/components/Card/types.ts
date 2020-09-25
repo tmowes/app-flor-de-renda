@@ -1,8 +1,10 @@
+import { SellsSheetProps } from '../../pages/Sells/types'
+
 export interface CardProps {
-  card: CardInfo
+  card: SellsSheetProps
   cardWith: number
   cardMargins: number
-  key: number
+  key: string
 }
 
 export interface CardInfo {

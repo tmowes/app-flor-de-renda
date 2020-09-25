@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
-import { TouchableOpacity } from 'react-native'
+import { TouchableOpacity, Dimensions } from 'react-native'
 import { useNavigation, DrawerActions } from '@react-navigation/native'
 import { Form } from '@unform/mobile'
 import axios from 'axios'
@@ -32,11 +32,16 @@ import {
   CartButton,
   AddIcon,
   CartIcon,
+  LeftColumn,
+  RightColumn,
 } from './styles'
 import { SellsSheetProps } from './types'
 import formatValue from '../../utils/formatValue'
 import ModalQRCode from '../../components/ModalQRCode'
 import Modal from '../../components/Modal'
+import Card from '../../components/Card'
+
+const { width: wWidth } = Dimensions.get('window')
 
 const Sells: React.FC = () => {
   const { dispatch } = useNavigation()
@@ -45,6 +50,9 @@ const Sells: React.FC = () => {
 
   const [sheetData, setSheetData] = useState<SellsSheetProps[]>([])
   const [openedItems, setOpenedItems] = useState<string[]>([])
+
+  const cardWith = (wWidth - 16 - 4) / 2
+  const cardMargins = wWidth / 2 - cardWith - 6
 
   useEffect(() => {
     async function loadData(): Promise<void> {
@@ -157,7 +165,7 @@ const Sells: React.FC = () => {
           </FlatListHeader>
         </Header>
         <BuysScrollView>
-          {sheetData.map(
+          {/* {sheetData.map(
             ({ id, price, title, quantity, totalPrice, productLine }) => (
               <ProductList
                 key={id}
@@ -166,7 +174,22 @@ const Sells: React.FC = () => {
                 {...{ id, price, title, quantity, totalPrice, productLine }}
               />
             ),
-          )}
+          )} */}
+
+          <LeftColumn>
+            {sheetData
+              .filter((_, index) => index % 2 !== 0)
+              .map(card => (
+                <Card key={card.id} {...{ card, cardWith, cardMargins }} />
+              ))}
+          </LeftColumn>
+          <RightColumn>
+            {sheetData
+              .filter((_, index) => index % 2 === 0)
+              .map(card => (
+                <Card key={card.id} {...{ card, cardWith, cardMargins }} />
+              ))}
+          </RightColumn>
         </BuysScrollView>
         {popup && <Modal modalTitle="pagamento" {...{ handleModal }} />}
         {qrcode && <ModalQRCode modalTitle="qrcode" {...{ handleQrcode }} />}

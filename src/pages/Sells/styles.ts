@@ -1,13 +1,16 @@
 import styled from 'styled-components/native'
 import { getBottomSpace } from 'react-native-iphone-x-helper'
 import Icon from 'react-native-vector-icons/Feather'
+import { Dimensions } from 'react-native'
 import logoImg from '../../assets/logo.png'
+
+const { width: wWidth } = Dimensions.get('window')
 
 export const Container = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
-  padding: 16px 16px;
+  /* padding: 16px 16px; */
   background: #9d49d3;
 `
 export const Header = styled.View`
@@ -95,11 +98,18 @@ export const FlatListHeaderText = styled.Text`
 export const BuysScrollView = styled.ScrollView`
   flex: 1;
   top: 186px;
-  margin: 0 0 178px;
-  width: 110%;
+  /* margin: 0 0 178px; */
+  width: ${wWidth}px;
+  /* width: 110%; */
   background: #ffdbfa;
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
+
+  /* flex-direction: row; */
+  /* flex-wrap: wrap; */
+  background: #ebcefa;
+  margin: 0 auto;
+  background: red;
 `
 
 export const SignOutButton = styled.TouchableOpacity`
@@ -155,3 +165,5 @@ export const Footer = styled.View`
 `
 export const AddButton = styled.TouchableOpacity``
 export const CartButton = styled.TouchableOpacity``
+export const LeftColumn = styled.View``
+export const RightColumn = styled.View``
