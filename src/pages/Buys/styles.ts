@@ -2,6 +2,8 @@ import styled from 'styled-components/native'
 import Icon from 'react-native-vector-icons/Feather'
 import { getBottomSpace } from 'react-native-iphone-x-helper'
 
+import logoImg from '../../assets/logo.png'
+
 export const MenuIcon = styled(Icon).attrs({
   name: 'menu',
   size: 32,
@@ -42,6 +44,12 @@ export const ClientHeader = styled.View`
   flex: 1;
   flex-direction: row;
   padding: 0 16px;
+`
+
+export const ClientContent = styled.View`
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
 `
 export const MenuButton = styled.TouchableOpacity``
 export const CartHeader = styled.View`
@@ -136,4 +144,14 @@ export const InTerm = styled.View`
 export const InTest = styled.View`
   align-items: center;
   justify-content: center;
+`
+export const AddButton = styled.TouchableOpacity``
+export const CartButton = styled.TouchableOpacity``
+
+export const LogoImage = styled.Image.attrs({
+  source: logoImg,
+  resizeMode: 'center',
+})`
+  flex: 1;
+  height: 56px;
 `

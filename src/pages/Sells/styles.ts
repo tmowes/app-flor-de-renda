@@ -153,3 +153,5 @@ export const Footer = styled.View`
   border-color: #9d49d3;
   padding: 0 16px ${40 + getBottomSpace()}px;
 `
+export const AddButton = styled.TouchableOpacity``
+export const CartButton = styled.TouchableOpacity``

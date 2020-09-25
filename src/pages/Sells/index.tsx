@@ -28,6 +28,8 @@ import {
   OrdersTitle,
   BuysScrollView,
   MenuButton,
+  AddButton,
+  CartButton,
   AddIcon,
   CartIcon,
 } from './styles'
@@ -145,13 +147,13 @@ const Sells: React.FC = () => {
             </OrderValue>
           </CartHeader>
           <FlatListHeader>
-            <TouchableOpacity onPress={handleQrcode}>
+            <AddButton onPress={handleQrcode}>
               <AddIcon />
-            </TouchableOpacity>
+            </AddButton>
             <FlatListHeaderText>PEDIDO</FlatListHeaderText>
-            <TouchableOpacity onPress={handleModal}>
+            <CartButton onPress={handleModal}>
               <CartIcon />
-            </TouchableOpacity>
+            </CartButton>
           </FlatListHeader>
         </Header>
         <BuysScrollView>

@@ -199,7 +199,6 @@ const PaymentModal: React.FC = () => {
           </Form>
         </InTest>
       )}
-
       <Button
         style={{ marginTop: 72 }}
         icon="dollar-sign"
