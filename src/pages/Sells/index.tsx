@@ -178,18 +178,18 @@ const Sells: React.FC = () => {
 
           <LeftColumn>
             {sheetData
-              .filter((_, index) => index % 2 !== 0)
+              // .filter((_, index) => index % 2 !== 0)
               .map(card => (
                 <Card key={card.id} {...{ card, cardWith, cardMargins }} />
               ))}
           </LeftColumn>
-          <RightColumn>
+          {/* <RightColumn>
             {sheetData
               .filter((_, index) => index % 2 === 0)
               .map(card => (
                 <Card key={card.id} {...{ card, cardWith, cardMargins }} />
               ))}
-          </RightColumn>
+          </RightColumn> */}
         </BuysScrollView>
         {popup && <Modal modalTitle="pagamento" {...{ handleModal }} />}
         {qrcode && <ModalQRCode modalTitle="qrcode" {...{ handleQrcode }} />}

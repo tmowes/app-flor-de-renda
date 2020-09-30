@@ -10,7 +10,7 @@ export const Container = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
-  /* padding: 16px 16px; */
+  padding: 16px 16px;
   background: #9d49d3;
 `
 export const Header = styled.View`
@@ -97,6 +97,8 @@ export const FlatListHeaderText = styled.Text`
 `
 export const BuysScrollView = styled.ScrollView`
   flex: 1;
+  flex-direction: row;
+  flex-wrap: wrap;
   top: 186px;
   /* margin: 0 0 178px; */
   width: ${wWidth}px;
@@ -109,7 +111,7 @@ export const BuysScrollView = styled.ScrollView`
   /* flex-wrap: wrap; */
   background: #ebcefa;
   margin: 0 auto;
-  background: red;
+  /* background: red; */
 `
 
 export const SignOutButton = styled.TouchableOpacity`
@@ -165,5 +167,11 @@ export const Footer = styled.View`
 `
 export const AddButton = styled.TouchableOpacity``
 export const CartButton = styled.TouchableOpacity``
-export const LeftColumn = styled.View``
+export const LeftColumn = styled.View`
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* background: red; */
+  width: ${wWidth + 16}px;
+  /* margin-left: -16px; */
+`
 export const RightColumn = styled.View``

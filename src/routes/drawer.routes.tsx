@@ -14,8 +14,8 @@ const { Navigator, Screen } = createDrawerNavigator()
 
 const DrawerRoutes: React.FC = () => (
   <Navigator drawerContent={() => <DrawerMenu />}>
-    <Screen name="Report" component={CardsPageTest} />
     <Screen name="Sells" component={Sells} />
+    <Screen name="Report" component={CardsPageTest} />
     <Screen name="Buys" component={Buys} />
     <Screen name="Graphic" component={Dashboard} />
     <Screen name="Query" component={Dashboard} />
