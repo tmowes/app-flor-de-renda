@@ -10,7 +10,6 @@ export const Container = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
-  padding: 16px 16px;
   background: #9d49d3;
 `
 export const Header = styled.View`
@@ -18,7 +17,7 @@ export const Header = styled.View`
   top: 5px;
   align-items: center;
   justify-content: center;
-  width: 110%;
+  width: 100%;
   background: #ffdbfa;
   padding-top: 12px;
 `
@@ -99,19 +98,13 @@ export const BuysScrollView = styled.ScrollView`
   flex: 1;
   flex-direction: row;
   flex-wrap: wrap;
-  top: 186px;
-  /* margin: 0 0 178px; */
+  top: 196px;
   width: ${wWidth}px;
-  /* width: 110%; */
   background: #ffdbfa;
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
-
-  /* flex-direction: row; */
-  /* flex-wrap: wrap; */
-  background: #ebcefa;
   margin: 0 auto;
-  /* background: red; */
+  margin-bottom: 196px;
 `
 
 export const SignOutButton = styled.TouchableOpacity`
@@ -147,7 +140,7 @@ export const Product = styled.View`
   flex-direction: row;
 `
 export const OrdersTitle = styled.Text`
-  font-size: 20px;
+  font-size: 18px;
   color: #312e38;
   font-family: 'RobotoSlab-Medium';
   margin: 0 0 8px;
@@ -170,8 +163,7 @@ export const CartButton = styled.TouchableOpacity``
 export const LeftColumn = styled.View`
   flex-direction: row;
   flex-wrap: wrap;
-  /* background: red; */
-  width: ${wWidth + 16}px;
-  /* margin-left: -16px; */
+  width: ${wWidth}px;
+  justify-content: space-evenly;
 `
 export const RightColumn = styled.View``

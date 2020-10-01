@@ -20,12 +20,13 @@ export const ActionsContainer = styled.View`
   align-items: center;
 `
 
-export const CardTitle = styled.Text`
+export const CardTitle = styled.Text.attrs({ numberOfLines: 2 })`
   text-transform: uppercase;
   margin-left: 8px;
   font-size: 16px;
   font-family: 'RobotoSlab-Medium';
   color: #12031f;
+  max-width: 150px;
 `
 
 export const MinusIcon = styled(Icon).attrs({
@@ -55,8 +56,9 @@ export const DeleteIcon = styled(Icon).attrs({
 })``
 
 export const CardFooter = styled.View`
-  flex-direction: row;
-  flex-wrap: wrap;
+  /* flex-direction: row; */
+  /* flex-wrap: wrap; */
+  width: 100%;
   position: absolute;
   bottom: 0;
   padding: 4px 0;
