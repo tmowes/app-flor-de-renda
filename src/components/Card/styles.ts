@@ -1,5 +1,6 @@
 import Icon from 'react-native-vector-icons/Feather'
 import styled from 'styled-components/native'
+import image from '../../assets/LOGO1.png'
 
 export const Container = styled.View`
   border-radius: 16px;
@@ -85,4 +86,18 @@ export const TotalContainer = styled.View`
   justify-content: flex-end;
   margin-right: 8px;
   align-items: center;
+`
+export const ImageContainer = styled.View`
+  flex: 1;
+`
+export const ProductImage = styled.Image.attrs({
+  source: {
+    uri:
+      'https://ae01.alicdn.com/kf/HTB1o2yuX79E3KVjSZFGq6A19XXa5/Lingerie-das-mulheres-adultas-calcinha-transparente-ver-atrav-s-de-pura-bunda-aberta-baixa-ascens-o.jpg_q50.jpg',
+  },
+  resizeMode: 'contain',
+})`
+  height: 150px;
+  width: 150px;
+  /* background: red; */
 `
