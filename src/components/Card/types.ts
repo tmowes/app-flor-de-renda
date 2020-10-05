@@ -2,7 +2,7 @@ import { SellsSheetProps } from '../../pages/Sells/types'
 
 export interface CardProps {
   card: SellsSheetProps
-  cardWith: number
+  cardWidth: number
   cardMargins: number
   key: string
 }
@@ -14,4 +14,9 @@ export interface CardInfo {
   quantity: number
   totalPrice: number
   productLine: string
+  imageProduct: string
+}
+
+export interface productImageProps {
+  cardWidth: number
 }

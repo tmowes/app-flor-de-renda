@@ -51,13 +51,13 @@ const Sells: React.FC = () => {
   const [sheetData, setSheetData] = useState<SellsSheetProps[]>([])
   const [openedItems, setOpenedItems] = useState<string[]>([])
 
-  const cardWith = (wWidth - 16 - 4) / 2
-  const cardMargins = wWidth / 2 - cardWith - 6
+  const cardWidth = (wWidth - 16 - 4) / 2
+  const cardMargins = wWidth / 2 - cardWidth - 6
 
   useEffect(() => {
     async function loadData(): Promise<void> {
       const sheetName = 'SellsDataDev'
-      const sheetRange = 'A2:F24'
+      const sheetRange = 'A2:G24'
       const { data } = await axios.get(
         `${ENV_SPREADSHEET_URL}/${ENV_SPREADSHEET_ID}/values/${sheetName}!${sheetRange}?key=${ENV_GOOGLE_KEY}`,
       )
@@ -70,6 +70,7 @@ const Sells: React.FC = () => {
           quantity: Number(item[4]),
           totalPrice: Number(item[3]) * Number(item[4]),
           productLine: item[5],
+          imageProduct: item[6],
         }
       })
       setSheetData(result)
@@ -180,7 +181,7 @@ const Sells: React.FC = () => {
             {sheetData
               // .filter((_, index) => index % 2 !== 0)
               .map(card => (
-                <Card key={card.id} {...{ card, cardWith, cardMargins }} />
+                <Card key={card.id} {...{ card, cardWidth, cardMargins }} />
               ))}
           </LeftColumn>
           {/* <RightColumn>

@@ -20,8 +20,8 @@ import {
 import { CardProps } from './types'
 
 const Card: React.FC<CardProps> = ({
-  card: { title, totalPrice, quantity, price },
-  cardWith,
+  card: { title, totalPrice, quantity, price, imageProduct },
+  cardWidth,
   cardMargins,
 }) => {
   const formattedTotalPrice = useMemo(() => {
@@ -33,8 +33,8 @@ const Card: React.FC<CardProps> = ({
   return (
     <Container
       style={{
-        height: cardWith * 1.777,
-        width: cardWith,
+        height: cardWidth * 1.777,
+        width: cardWidth,
         margin: cardMargins,
         elevation: cardMargins,
         backgroundColor: 'white',
@@ -48,7 +48,7 @@ const Card: React.FC<CardProps> = ({
       </CardHeader>
       <ImageContainer>
         <TextValue>{formattedPrice}</TextValue>
-        <ProductImage />
+        <ProductImage source={{ uri: imageProduct }} cardWidth={cardWidth} />
       </ImageContainer>
       <CardFooter>
         <ActionsContainer>

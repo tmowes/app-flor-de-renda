@@ -5,6 +5,7 @@ export interface SellsSheetProps {
   quantity: number
   totalPrice: number
   productLine: string
+  imageProduct: string
 }
 
 export interface ProductsSheetProps {
