@@ -1,5 +1,6 @@
-import React, { useMemo } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import { formatValue } from '../../utils'
+import ButtonIconContainer from '../ButtonIconContainer'
 
 import {
   Container,
@@ -20,7 +21,7 @@ import {
 import { CardProps } from './types'
 
 const Card: React.FC<CardProps> = ({
-  card: { title, totalPrice, quantity, price, imageProduct },
+  card: { id, title, totalPrice, quantity, price, imageProduct },
   cardWidth,
   cardMargins,
 }) => {
@@ -30,6 +31,12 @@ const Card: React.FC<CardProps> = ({
   const formattedPrice = useMemo(() => {
     return formatValue(price)
   }, [price])
+  const handleDeleteCard = useCallback((cardId: string) => {
+    console.log('delete', cardId)
+  }, [])
+  const handleQuantityChange = useCallback((value: number) => {
+    console.log({ value })
+  }, [])
   return (
     <Container
       style={{
@@ -43,7 +50,9 @@ const Card: React.FC<CardProps> = ({
       <CardHeader>
         <CardTitle>{title}</CardTitle>
         <DeleteContainer>
-          <DeleteIcon />
+          <ButtonIconContainer onPress={() => handleDeleteCard(id)}>
+            <DeleteIcon />
+          </ButtonIconContainer>
         </DeleteContainer>
       </CardHeader>
       <ImageContainer>
@@ -52,9 +61,13 @@ const Card: React.FC<CardProps> = ({
       </ImageContainer>
       <CardFooter>
         <ActionsContainer>
-          <MinusIcon />
+          <ButtonIconContainer onPress={() => handleQuantityChange(-1)}>
+            <MinusIcon />
+          </ButtonIconContainer>
           <TextValue>{quantity}</TextValue>
-          <AddIcon />
+          <ButtonIconContainer onPress={() => handleQuantityChange(1)}>
+            <AddIcon />
+          </ButtonIconContainer>
         </ActionsContainer>
         <TotalContainer>
           <TextValue>{formattedTotalPrice}</TextValue>

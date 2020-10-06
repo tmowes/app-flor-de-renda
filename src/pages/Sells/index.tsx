@@ -63,7 +63,7 @@ const Sells: React.FC = () => {
       )
       const result = data.values.map((item: SellsSheetProps[]) => {
         return {
-          id: `${item[0]}${item[1]}`,
+          id: `${item[0]}`,
           title: item[1],
           size: item[2],
           price: Number(item[3]),
