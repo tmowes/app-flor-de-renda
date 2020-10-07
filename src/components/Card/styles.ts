@@ -49,13 +49,19 @@ export const DeleteContainer = styled.View`
   background: #c5303040;
   overflow: hidden;
   border-bottom-left-radius: 12px;
+  height: 40px;
+  /* margin: auto 0; */
+  justify-content: center;
+  align-items: center;
 `
 
 export const DeleteIcon = styled(Icon).attrs({
   name: 'x',
   size: 28,
   color: 'black',
-})``
+})`
+  /* background-color: #fff; */
+`
 
 export const CardFooter = styled.View`
   /* flex-direction: row; */
