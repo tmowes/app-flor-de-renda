@@ -1,6 +1,13 @@
 import React, { useCallback, useMemo } from 'react'
+import axios from 'axios'
 import { formatValue } from '../../utils'
 import ButtonIconContainer from '../ButtonIconContainer'
+import {
+  ENV_SPREADSHEET_URL,
+  ENV_GOOGLE_KEY,
+  ENV_SPREADSHEET_ID,
+} from '../../secrets/env.json'
+import json from './teste.json'
 
 import {
   Container,
@@ -31,7 +38,13 @@ const Card: React.FC<CardProps> = ({
   const formattedPrice = useMemo(() => {
     return formatValue(price)
   }, [price])
-  const handleDeleteCard = useCallback((cardId: string) => {
+  const handleDeleteCard = useCallback(async (cardId: string) => {
+    const USER_ENTERED = JSON.parse(json)
+    const sheetName = 'SellsDataDev'
+    const sheetRange = 'H1:K5'
+    await axios.put(
+      `${ENV_SPREADSHEET_URL}/${ENV_SPREADSHEET_ID}/values/${sheetName}!${sheetRange}?valueInputOption=${USER_ENTERED}?key=${ENV_GOOGLE_KEY}`,
+    )
     console.log('delete', cardId)
   }, [])
   const handleQuantityChange = useCallback((value: number) => {
